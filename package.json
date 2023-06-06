@@ -1,0 +1,20 @@
+{
+  "name": "11ty-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "assets:copy": "cp -R src/assets/* _site/",
+    "build": "npx eleventy && npm run assets:copy",
+    "dev": "npx @11ty/eleventy --serve --watch",
+    "start": "npx @11ty/eleventy --serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "eleventy-plugin-embed-everything": "^1.16.0"
+  }
+}

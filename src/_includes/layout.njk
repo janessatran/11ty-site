@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Grab title from the page data and dump it here -->
+  <title>{{ title }}</title>
+</head>
+<body>
+  <main>
+    <header class="gap-m">
+      <a href="/" class="author">
+      <div class="author"> 
+        <h2 class="author-name"> 
+          <div class="author-name-char">J</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char">e</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char"> </div> 
+          <div class="author-name-char">T</div> 
+          <div class="author-name-char">r</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char | smiley">☺&#xFE0E;</div> 
+        </h2>
+      </div>
+      </a>
+
+      <nav class="gap-xl">
+        <ul class="nav">
+          <li><a href="/now" class="color-slide">now</a></li>
+          <li><a href="/journal" class="color-slide">journal</a></li>
+          <li><a href="/works" class="color-slide">works</a></li>
+          <li><a href="/inspiration" class="color-slide">inspiration</a></li>
+        </u>
+      </nav>
+        <!-- Grab the content from the page data, dump it here, and mark it as safe -->
+      <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
+      {{ content | safe }}
+    </header>
+
+  
+  </main>
+
+</body>
+</html>
