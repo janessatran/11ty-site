@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Grab title from the page data and dump it here -->
+  <title>Sprucing up the Win Screen</title>
+</head>
+<body>
+  <main>
+    <header class="gap-m">
+      <a href="/" class="author">
+      <div class="author"> 
+        <h2 class="author-name"> 
+          <div class="author-name-char">J</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char">e</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char"> </div> 
+          <div class="author-name-char">T</div> 
+          <div class="author-name-char">r</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char | smiley">☺&#xFE0E;</div> 
+        </h2>
+      </div>
+      </a>
+
+      <nav class="gap-xl">
+        <ul class="nav">
+          <li><a href="/words" class="color-slide">words</a></li>
+          <li><a href="/works" class="color-slide">works</a></li>
+          <li><a href="/inspiration" class="color-slide">inspiration</a></li>
+        </u>
+      </nav>
+        <!-- Grab the content from the page data, dump it here, and mark it as safe -->
+      <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
+      <p>If you've been following me along my journey of learning html game development, you know that I have been working on implementing additional features to my game <a href="https://janessatran.github.io/html5game">Adventures of Leat</a>. In this post, I will explain how I spruced up the Win State page using sprite sheet animations!</p>
+<p><em>If you haven't been following along or just have no idea what I am talking about, you can read the first part of this GameDev blog series in my <a href="https://www.janessatran.com/htmlgamedevelopment/">original post about learning game development</a></em></p>
+<h2>What do you mean by &quot;sprucing up&quot;?</h2>
+<p>If you play the game, you go around avoiding spiders, collecting keys to open doors, and collecting coins along the way. I wanted to add some pizzazz to the win screen by showing the tally of coins Leat collects at the end of the game, ideally with an animated coin to make it more exciting!</p>
+<p><strong>The object is to go from this:</strong></p>
+<img src="https://i.imgur.com/Ra31dBW.png" alt="A screen that says 'You Won' and 'Press w to restart'">
+<p><strong>To this:</strong></p>
+<img src="https://i.imgur.com/IQefoql.gif" alt="A screen that says Yay! You Won 20 coins next to an animated image of ßa spinning coin">
+<h2>Passing coin data to <code>WinState</code></h2>
+<p>First we need to be able to pass data about the number of collected coins from our <code>PlayState</code> to our <code>WinState</code>. We can do this by passing a JSON object with our coin data that we've stored in <code>PlayState.coinPickupCount</code> to the function call that is made when we initialize our <code>WinState</code>:</p>
+<pre><code class="language-js">// start(key, clearWorld, clearCache, parameter)
+// true - keep cache
+// false - don't keep existing world objects
+this.game.state.start(&quot;win&quot;, true, false, { coins: this.coinPickupCount });
+</code></pre>
+<p>We then need to modify <code>WinState</code> to handle this information. We do this by creating an <code>init()</code> function which takes an argument we've named <code>data</code>. Inside the function, we check if <code>data</code> is defined, and if it is we set <code>WinState.coinPickupCount</code> to the value <code>data.coins</code>.</p>
+<pre><code class="language-js">WinState.init = function (data) {
+  if (data != undefined) {
+    this.coinPickupCount = data.coins;
+  } else {
+    this.coinPickupCount = 0;
+  }
+};
+</code></pre>
+<p>Now our <code>WinState</code> has the data about the number of coins collected! We will now move onto how to add the animated coin image to the screen.</p>
+<h2>Loading the Animated Coin Image</h2>
+<p>To add the animated coin image to the screen, we modify the <code>WinState.preload</code> function to load our sprite sheet with the animated coin. A <strong>sprite sheet</strong> is a bitmap image file that contains several smaller graphics in a tile grid arrangement.</p>
+<p>Our coin sprite sheet contains 4 tiles with images of the coin at different angles:</p>
+<center><img src="https://i.imgur.com/aHTMPTf.png" alt="An image of 4 coins across a one row grid that display the coin from a different angle in each tile"></center>
+<br>
+<pre><code class="language-js">WinState.preload = function () {
+  this.game.load.image(&quot;background&quot;, &quot;images/background.png&quot;);
+  this.game.load.spritesheet(&quot;coin&quot;, &quot;images/coin_animated.png&quot;, 22, 22);
+};
+</code></pre>
+<h3>Why preload the assets?</h3>
+<p>You might be wondering why we preload the assets instead of just loading them when we use them. The short answer: best practice. Usually, a game may need to load a large number of assets for a scene. It may take some time to load them all, so preloading allows you to integrate a loading bar or some indicator to the player that the game is loading. In our case we do not have a wealth of assets, but we should follow the best practices in case we do eventually expand the game to include a lot of assets!</p>
+<h3>Adding the animations to the sprite sheet</h3>
+<p>Lastly, in our <code>create</code> function we load the sprite sheet and add it to the page.</p>
+<pre><code class="language-js">let animatedCoinIcon = this.game.add.sprite(80, 215, &quot;coin&quot;);
+</code></pre>
+<p>Then, we set the <strong>anchor</strong>, which sets the origin point for the animation.</p>
+<pre><code class="language-js">animatedCoinIcon.anchor.set(0.5, 0.5);
+</code></pre>
+<p>Now, we define an animation sequence for our <code>animatedCoinIcon</code> using the <code>animations.add</code> function:</p>
+<pre><code class="language-js">// add(name, frames, frameRate, loop, useNumericIndex) → {Phaser.Animation}
+animatedCoinIcon.animations.add(&quot;rotate&quot;, [0, 1, 2, 1], 6, true);
+</code></pre>
+<p><em>Documentation on the add function can be found <a href="https://phaser.io/docs/2.6.2/Phaser.AnimationManager.html#add">here</a>.</em></p>
+<p>Lastly, we play the animation!</p>
+<pre><code class="language-js">animatedCoinIcon.animations.play(&quot;rotate&quot;);
+</code></pre>
+<p>All together this looks like:</p>
+<pre><code class="language-js">WinState.create = function () {
+  this.game.add.image(0, 0, &quot;background&quot;);
+
+  // Here we load the sprite sheet, which we've named coin in our preload function
+  let animatedCoinIcon = this.game.add.sprite(80, 215, &quot;coin&quot;);
+  // Next we set the anchor, aka the origin point
+  animatedCoinIcon.anchor.set(0.5, 0.5);
+
+  // add(name, frames, frameRate, loop, useNumericIndex) → {Phaser.Animation}
+  animatedCoinIcon.animations.add(&quot;rotate&quot;, [0, 1, 2, 1], 6, true);
+  animatedCoinIcon.animations.play(&quot;rotate&quot;);
+
+  let winLabel = this.game.add.text(80, 80, &quot;Yay!&quot;, {
+    font: &quot;50px Arial&quot;,
+    fill: &quot;#760e99&quot;,
+  });
+  let coinLabel = this.game.add.text(
+    100,
+    200,
+    &quot;You collected &quot; + this.coinPickupCount + &quot; coins. Nice job!&quot;,
+    { font: &quot;30px Arial&quot;, fill: &quot;#760e99&quot; }
+  );
+};
+</code></pre>
+<h2>Woohoo!</h2>
+<p>There you have it! We now have a spruced up win page which tells the player how many coins they collected with a neat animation to jazz things up!</p>
+
+    </header>
+
+  
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Grab title from the page data and dump it here -->
+  <title>Useful Rails Console Commands</title>
+</head>
+<body>
+  <main>
+    <header class="gap-m">
+      <a href="/" class="author">
+      <div class="author"> 
+        <h2 class="author-name"> 
+          <div class="author-name-char">J</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char">e</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char"> </div> 
+          <div class="author-name-char">T</div> 
+          <div class="author-name-char">r</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char | smiley">☺&#xFE0E;</div> 
+        </h2>
+      </div>
+      </a>
+
+      <nav class="gap-xl">
+        <ul class="nav">
+          <li><a href="/words" class="color-slide">words</a></li>
+          <li><a href="/works" class="color-slide">works</a></li>
+          <li><a href="/inspiration" class="color-slide">inspiration</a></li>
+        </u>
+      </nav>
+        <!-- Grab the content from the page data, dump it here, and mark it as safe -->
+      <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
+      <p>I work a lot with the rails console and learned a few cool things you can do inside the console that I wanted to record. If you're unfamiliar with the <strong>rails console</strong>, it's a command that lets you interact with your Rails application from the command line.</p>
+<h2>Useful Things You Can Do In Rails Console</h2>
+<p><strong>To clear the console:</strong> <code>CMD + R</code></p>
+<p><strong>To list available methods on an object:</strong> <code>ls</code></p>
+<p><strong>Reload console:</strong> <code>reload!</code></p>
+<p><strong>View method's source:</strong> <code>show-source object</code></p>
+<p><strong>Shortcut for value of last successful expression: <code>_</code></strong>
+This is useful when you run a command and then you decide you want to reference it. Instead of typing the entire command again or going back to assign it to some variable, you can just use <code>_</code>.</p>
+<p><strong>To view all commands available from the pry gem, in the console type</strong> <code>help</code></p>
+<p><strong>To access high level methods in the application</strong> such as path helpers or HTTP methods, you can call those methods on <code>app</code>:</p>
+<pre><code class="language-ruby">app.root_path
+app.get(app.root_path))
+</code></pre>
+<p>Similarly, you can call <code>helper</code> to get access to view helpers defined by you and also by rails (such as <code>link_to</code>)</p>
+
+    </header>
+
+  
+  </main>
+
+</body>
+</html>

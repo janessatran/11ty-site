@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Grab title from the page data and dump it here -->
+  <title>Making a Responsive Layout with CSS Grid</title>
+</head>
+<body>
+  <main>
+    <header class="gap-m">
+      <a href="/" class="author">
+      <div class="author"> 
+        <h2 class="author-name"> 
+          <div class="author-name-char">J</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char">e</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char"> </div> 
+          <div class="author-name-char">T</div> 
+          <div class="author-name-char">r</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char | smiley">☺&#xFE0E;</div> 
+        </h2>
+      </div>
+      </a>
+
+      <nav class="gap-xl">
+        <ul class="nav">
+          <li><a href="/words" class="color-slide">words</a></li>
+          <li><a href="/works" class="color-slide">works</a></li>
+          <li><a href="/inspiration" class="color-slide">inspiration</a></li>
+        </u>
+      </nav>
+        <!-- Grab the content from the page data, dump it here, and mark it as safe -->
+      <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
+      <p>One of my goals this year is to intentionally learn CSS. More specifically, I'd like to learn how to use CSS to make responsive web design, animations, and accessible websites. Recently I completed FreeCodeCamp's Responsive Web Design course and completed the first project which involves making a tribute page. I made a tribute page for Elliot Smith, which you can <a href="https://janessatran.github.io/tributepage/">view here</a>. In this project, I utilized CSS Grid and <code>grid-template-areas</code> to make a responsive layout. In this post, I will describe how to set up a responsive layout using my project as an example.</p>
+<h2>What is CSS Grid?</h2>
+<p>CSS is grid is a layout system available in CSS that handles columns and rows, thus making it a 2D grid system. It works by applying grid properties to the parent element AKA the <strong>Grid Container</strong>, and child elements AKA the <strong>Grid Items</strong>.</p>
+<h2>How to set up CSS Grid in your display</h2>
+<p>To set up CSS Grid in your layout, you define <code>display</code> on the Grid Container to set up a new grid formatting context for the contents of the container. The possible values include:</p>
+<p>Values:</p>
+<ul>
+<li><strong>grid</strong> – generates a block-level grid</li>
+<li><strong>inline-grid</strong> – generates an inline-level grid</li>
+</ul>
+<p>In my project, I wanted to make the album container responsive. On a desktop view, the albums display in 2 rows with 3 columns. On a mobile view, the albums display in a single column with 6 rows instead.</p>
+<p>To begin the set up, I defined <code>display: grid</code> on the parent container for the albums.</p>
+<pre><code class="language-css">.albums-grid {
+  margin: auto;
+  display: grid;
+  ...;
+}
+</code></pre>
+<h2>Defining <code>grid-template-areas</code></h2>
+<p>The next step is to define the layout, which I mentioned earlier. There are several ways to do this. You can define <code>grid-template-columns</code>, <code>grid-template-rows</code>, or <code>grid-template-areas</code>.</p>
+<p>For my project, I went with the last option. The cool thing about <code>grid-template-areas</code> is the syntax provides a visual of what the grid looks like. Here is an example:</p>
+<pre><code class="language-css">@media (max-width: 1000px) {
+  .albums-grid {
+    grid-template-areas:
+      &quot;album1&quot;
+      &quot;album2&quot;
+      &quot;album3&quot;
+      &quot;album4&quot;
+      &quot;album5&quot;
+      &quot;album6&quot;;
+  }
+}
+</code></pre>
+<h2>Resulting Layout</h2>
+<p>On a wide screen (such as desktop), the layout looks like this:
+<img src="https://i.imgur.com/TM9torU.png" alt="A grid of 2 rows and 3 columns, displaying albums by musician Elliot Smith."></p>
+<p>On a more narrow screen (such as mobile), the layout looks like this:
+<img src="https://i.imgur.com/SKpMSiF.png" alt="A grid of 6 rows and 1 column, displaying albums by musician Elliot Smith."></p>
+<h2>References</h2>
+<p>If you would like to learn more, here are some good references to check out.</p>
+<ul>
+<li><a href="%5Bhttps://css-tricks.com/snippets/css/complete-guide-grid/%5D(https://css-tricks.com/snippets/css/complete-guide-grid/)">Complete Guide to CSS Grid by CSS Tricks</a></li>
+<li><a href="%5Bhttps://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Realizing_common_layouts_using_CSS_Grid_Layout%5D(https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Realizing_common_layouts_using_CSS_Grid_Layout)">Realizing Common Layouts Using CSS Grid by MDN</a></li>
+</ul>
+
+    </header>
+
+  
+  </main>
+
+</body>
+</html>

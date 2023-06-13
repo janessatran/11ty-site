@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Grab title from the page data and dump it here -->
+  <title>Learning Log (03) - Rails AntiPatterns, Model layer code</title>
+</head>
+<body>
+  <main>
+    <header class="gap-m">
+      <a href="/" class="author">
+      <div class="author"> 
+        <h2 class="author-name"> 
+          <div class="author-name-char">J</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char">e</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char"> </div> 
+          <div class="author-name-char">T</div> 
+          <div class="author-name-char">r</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char | smiley">☺&#xFE0E;</div> 
+        </h2>
+      </div>
+      </a>
+
+      <nav class="gap-xl">
+        <ul class="nav">
+          <li><a href="/words" class="color-slide">words</a></li>
+          <li><a href="/works" class="color-slide">works</a></li>
+          <li><a href="/inspiration" class="color-slide">inspiration</a></li>
+        </u>
+      </nav>
+        <!-- Grab the content from the page data, dump it here, and mark it as safe -->
+      <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
+      <p>Today I started reading a book called &quot;Rails AntiPatterns, Best Practice Ruby on Rails Refactoring&quot;. My goal with reading this book is to get a better sense of how to write more organized, clean code that makes sense to other people and is easier to maintain. In this post, I will share what I learned today from the book!</p>
+<h2>Follow the Law of Demeter, aka, &quot;use only one dot&quot;.</h2>
+<p>This law describes the concept that an object can call methods on a related object, but it should not reach through that object to call a method on a third related object.</p>
+<p>Example: Say that you have created a Rails app with different models like the following...</p>
+<pre><code class="language-ruby">class Library &lt; ActiveRecord::Base
+  has_many :books
+  has_one :address
+end
+
+class Book &lt; ActiveRecord::Base
+  belongs_to :library
+  has_one :genre
+end
+
+class Address &lt; ActiveRecord::Base
+  belongs_to :library
+end
+</code></pre>
+<p>If we were to show a view of the data above (a book of a specific genre, available at a specific library, which is at a specific address) it might look something like:</p>
+<pre><code># library_books.html.erb
+
+&lt;%= @book.genre %&gt;
+&lt;%= @book.library.name %&gt;
+&lt;%= @book.library.address.street %&gt;
+&lt;%= @book.library.address.city %&gt;
+&lt;%= @book.library.address.state %&gt;
+&lt;%= @book.library.address.zip_code %&gt;
+</code></pre>
+<p>This violates the Law of Demeter because we have to access information through associations of other models (we don't just use one &quot;dot&quot;). This is not ideal because the list of dependencies makes the code more fragile in the case that one of the association's changes. For example, what would happen if we wanted to change <code>address</code> to <code>location</code>? We'd have to go through our code and find every call to <code>address</code> and change it! I mean, it's possible, but kind of a lot of work.</p>
+<p>Luckily, Rails enables us to easily address this concern with the <code>delegate</code> method. In short, delegation allows us to use methods of one object from another by &quot;delegating&quot; them from one class to another.</p>
+<pre><code class="language-ruby">class Library &lt; ActiveRecord::Base
+  has_many :books
+  has_one :address
+
+  delegate :city, :street, :state, :zip_code, to: :address
+end
+
+class Book
+  belongs_to :library
+  has_one :genre
+
+  delegate :name, :city, :street, :state, :zip_code, to: :library, prefix: 'library'
+end
+
+class Address &lt; ActiveRecord::Base
+  belongs_to :library
+end
+</code></pre>
+<p>Looking at the <code>Library</code> model, we've set up a delegation such that we can now call <code>:city, :street, :state, :zip_code</code> from a <code>Library</code> object directly. The <code>delegate</code>method passes all those method calls to <code>address</code>, which we have through the <code>has_one</code> association. If we call <code>current_library.street</code>, for example, it will be translated to <code>current_library.address.street</code> since we've delegated <code>street</code> to call <code>address</code>.</p>
+<p>Another way to think about this, if the above doesn't make sense, is reading it like: &quot;hey <code>Book</code> objects, if you get a call to <code>:street</code>, we are delegating it to <code>Library</code>&quot;.</p>
+<h2>Push all calls to find() into Finders in the Model</h2>
+<p>In short, don't have any logic in the presentation layer (views).</p>
+<p>Example: say you want to display a page of users of your application by order of last name.</p>
+<pre><code class="language-haml">-# index.haml
+
+#user-list
+  %h1 Users
+  - User.order(:last_name).each do |u|
+    %li link_to u.profile, u.full_name
+</code></pre>
+<p>Instead of having the logic directly in the view, it's better to put it in the Controller and Model. If we wanted to list the users by order of last name again, we would need to repeat this logic and repeating code is not ideal (more about the DRY concept can be found <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">here</a>.</p>
+<pre><code class="language-ruby">class UsersController &lt; ApplicationController
+  def index
+    @users = User.ordered_by_last_name
+  end
+end
+</code></pre>
+<p>We can use a <code>scope</code>, which enables us to specify commonly-used queries as method calls on objects:</p>
+<pre><code class="language-ruby">class User &lt; ActiveRecord::Base
+  scope :ordered_by_last_name, -&gt; { order(title: asc) }
+end
+</code></pre>
+<p>Now, in our view, we can do:</p>
+<pre><code class="language-ruby">-# index.haml
+
+#user-list
+  %h1 Users
+  - @users.each do |u|
+    %li link_to u.profile, u.full_name
+</code></pre>
+<h2>Keep Finders in Their Own Model</h2>
+<p>Finder are calls that query the database. For example, say we have a model <code>User</code> and <code>Orders</code> and wanted to <strong>find</strong> all of a user's orders that have just been created. That query finder would look something like:</p>
+<pre><code class="language-ruby">class UsersController &lt; ApplicationController
+  def index
+    @user = User.find(params[:id])
+    @orders = @user.orders.where(status: created, created_at 2.days.ago)
+  end
+end
+</code></pre>
+<p>We can improve this code by moving the finder (of created orders) inside the <code>Order</code> model. This will make the <code>UsersController</code> thinner and clarify what it's doing with a semantic method name defined in the <code>Orders</code> model.</p>
+<pre><code class="language-ruby">class UsersController &lt; ApplicationController
+  def index
+    @user = User.find(params[:id])
+    @recently_created_orders = @user.find_created_orders
+  end
+end
+
+class User &lt; ActiveRecord::Base
+  has_many :orders
+
+  def find_created_orders
+    orders.where(status: created, created_at 2.days.ago)
+  end
+end
+</code></pre>
+<p>But.. wait!! We can improve this even more. Active Record associations give us a proxy class that act like arrays and lets us access methods on the target class. This means that if we had a method like <code>Order.recently_created</code> we could use it through our associations, <code>user.orders.recently_created</code>.</p>
+<pre><code class="language-ruby">class UsersController &lt; ApplicationController
+  def index
+    @user = User.find(params[:id])
+    @recently_created_orders = User.recently_created_orders
+  end
+end
+
+class User &lt; ActiveRecord::Base
+  has_many :orders
+
+  def recently_created_orders
+    orders.recently_created
+  end
+end
+
+class Order &lt; ActiveRecord::Base
+  belongs_to :user
+
+  def self.recently_created
+    (status: created, created_at 2.days.ago)
+  end
+end
+</code></pre>
+<p>This finder object pattern helps keep the model logic strictly related to a class' behavior, unlike before when we had a query for <code>Order</code> in our <code>User</code> controller. It also helps keep the controller's skinny.</p>
+
+    </header>
+
+  
+  </main>
+
+</body>
+</html>

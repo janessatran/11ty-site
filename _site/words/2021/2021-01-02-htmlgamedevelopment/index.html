@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Grab title from the page data and dump it here -->
+  <title>Learning HTML Game Development - The Beginning</title>
+</head>
+<body>
+  <main>
+    <header class="gap-m">
+      <a href="/" class="author">
+      <div class="author"> 
+        <h2 class="author-name"> 
+          <div class="author-name-char">J</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char">e</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char"> </div> 
+          <div class="author-name-char">T</div> 
+          <div class="author-name-char">r</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char | smiley">☺&#xFE0E;</div> 
+        </h2>
+      </div>
+      </a>
+
+      <nav class="gap-xl">
+        <ul class="nav">
+          <li><a href="/words" class="color-slide">words</a></li>
+          <li><a href="/works" class="color-slide">works</a></li>
+          <li><a href="/inspiration" class="color-slide">inspiration</a></li>
+        </u>
+      </nav>
+        <!-- Grab the content from the page data, dump it here, and mark it as safe -->
+      <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
+      <h2>I'm learning Game Development !!</h2>
+<p>I've recently been drawn to learning how to develop games. If you read <a href="/pursuitofjoy/">my post about 2021 being the Year of Joy</a>, you will know that my intention for this year is to pursue the things that bring about this feeling. Learning new things brings me joy (one of my top values in life is growth), and creating things that are fun and cute definitely bring me A LOT of joy.</p>
+<p>I started the learning process by completing <a href="https://mozdevs.github.io/html5-games-workshop/en/guides/platformer/start-here/">Mozilla's HTML5 Games Workshop</a>. It walks through how to use Phaser.js to build a platformer game and provides all the assets in order to build out two levels of the game.</p>
+<p>At the end of the workshop, it details a few suggestions of <a href="https://mozdevs.github.io/html5-games-workshop/en/guides/platformer/moving-forward/">additional features that would improve the game</a>. I plan to add these features to continue learning. I also intend to share my learning journey here on my blog, starting with the first add-on feature: game states!</p>
+<h2>Adding Game States</h2>
+<p>A &quot;state&quot; represents the screen in the game. For example, you may have a loading state, play state, win state, menu state, etc. Adding onto the workshop game, I implemented a <strong>Menu State</strong>, which appears when the game first loads, and a <strong>Win State</strong>, which appears after all the levels are complete.</p>
+<p>Our <code>game</code> object is created with <a href="https://phaser.io/docs/2.4.4/Phaser.Game.html">Phaser's Game class</a>. One of the objects available to the <code>game</code> object is <code>state</code>, which is an instantiation of the <code>StateManager</code> class, which is very properly named because it basically just manages the game states. You can add new states to the game by calling <code>game.state.add(key, state)</code>, where <code>key</code> is a string you define to uniquely reference the state, and <code>state</code> is an object representing the state you want to switch to.</p>
+<p>I set up the additional game states in the main window onload function.</p>
+<pre><code class="language-js">window.onload = function () {
+  // Create game object.
+  let game = new Phaser.Game(960, 600, Phaser.AUTO, &quot;game&quot;);
+
+  // Define game states.
+  // A game state represents one &quot;screen&quot; in the game
+  // the screen consists of: loading screen, main menu, level, etc
+  game.state.add(&quot;play&quot;, PlayState);
+  game.state.add(&quot;menu&quot;, MenuState);
+  game.state.add(&quot;win&quot;, WinState);
+
+  // Set starting state to menu.
+  game.state.start(&quot;menu&quot;);
+};
+</code></pre>
+<p>Accordingly, I created my state objects: <code>MenuState</code> and <code>WinState</code>.</p>
+<p>In the <code>MenuState</code> object, I load the assets in the <code>preload</code> function and set up the background image and text labels in <code>create</code>. I also added a keyboard listener to start the game once the user presses the &quot;W&quot; key by defining the <code>start</code> function to call the <code>play</code> state for the game object.</p>
+<pre><code class="language-js">/******************************************************
+  Menu State
+*******************************************************/
+MenuState = {};
+
+MenuState.preload = function () {
+  this.game.load.image(&quot;background&quot;, &quot;images/background.png&quot;);
+};
+
+MenuState.create = function () {
+  this.game.add.image(0, 0, &quot;background&quot;);
+
+  let nameLabel = this.game.add.text(80, 80, &quot;Adventures of Leat&quot;, {
+    font: &quot;50px Arial&quot;,
+    fill: &quot;#107003&quot;,
+  });
+
+  let startLabel = this.game.add.text(
+    80,
+    this.game.world.height - 80,
+    'Press the &quot;W&quot; key to start',
+    { font: &quot;25px Arial&quot;, fill: &quot;#107003&quot; }
+  );
+
+  let wKey = this.game.input.keyboard.addKey(Phaser.KeyCode.W);
+  wKey.onDown.addOnce(this.start, this);
+};
+
+MenuState.start = function () {
+  this.game.state.start(&quot;play&quot;, true, false, { level: 0 });
+};
+</code></pre>
+<p>The <code>WinState</code> object is very similar, except instead of starting the game, it restarts the game when the user presses &quot;W&quot;:</p>
+<pre><code class="language-js">/******************************************************
+  Win State
+*******************************************************/
+WinState = {};
+
+WinState.preload = function () {
+  this.game.load.image(&quot;background&quot;, &quot;images/background.png&quot;);
+};
+
+WinState.create = function () {
+  this.game.add.image(0, 0, &quot;background&quot;);
+
+  let winLabel = this.game.add.text(80, 80, &quot;YOU WON!&quot;, {
+    font: &quot;50px Arial&quot;,
+    fill: &quot;#760e99&quot;,
+  });
+  let startLabel = this.game.add.text(
+    80,
+    this.game.world.height - 80,
+    'Press the &quot;W&quot; key to restart',
+    { font: &quot;25px Arial&quot;, fill: &quot;#107003&quot; }
+  );
+
+  let wKey = this.game.input.keyboard.addKey(Phaser.KeyCode.W);
+  wKey.onDown.addOnce(this.restart, this);
+};
+
+WinState.restart = function () {
+  this.game.state.start(&quot;menu&quot;);
+};
+</code></pre>
+<h2>Resulting Features</h2>
+<p>The result looks like this:
+<img src="https://i.imgur.com/Q3XcBn4.png" alt="A screen that says 'Adventures of Leat' and 'Press w to start'"></p>
+<p>and our Win State:
+<img src="https://i.imgur.com/Ra31dBW.png" alt="A screen that says 'You Won' and 'Press w to restart'"></p>
+<p>Pretty cool, I think!!</p>
+
+    </header>
+
+  
+  </main>
+
+</body>
+</html>
