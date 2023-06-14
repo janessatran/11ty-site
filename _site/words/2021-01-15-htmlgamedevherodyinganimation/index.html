@@ -1,46 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <link rel="stylesheet" href="/css/style.css">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Grab title from the page data and dump it here -->
-  <title>Animating the Hero&#39;s Death</title>
-</head>
-<body>
-  <main>
-    <header class="gap-m">
-      <a href="/" class="author">
-      <div class="author"> 
-        <h2 class="author-name"> 
-          <div class="author-name-char">J</div> 
-          <div class="author-name-char">a</div> 
-          <div class="author-name-char">n</div> 
-          <div class="author-name-char">e</div> 
-          <div class="author-name-char">s</div> 
-          <div class="author-name-char">s</div> 
-          <div class="author-name-char">a</div> 
-          <div class="author-name-char"> </div> 
-          <div class="author-name-char">T</div> 
-          <div class="author-name-char">r</div> 
-          <div class="author-name-char">a</div> 
-          <div class="author-name-char">n</div> 
-          <div class="author-name-char | smiley">☺&#xFE0E;</div> 
-        </h2>
-      </div>
-      </a>
+  <head>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Grab title from the page data and dump it here -->
+    <title>Animating the Hero&#39;s Death</title>
+  </head>
+  <body>
+    <main>
 
-      <nav class="gap-xl">
-        <ul class="nav">
-          <li><a href="/words" class="color-slide">words</a></li>
-          <li><a href="/works" class="color-slide">works</a></li>
-          <li><a href="/inspiration" class="color-slide">inspiration</a></li>
-        </u>
-      </nav>
+      <header class="gap-m">
+        <div class="title-and-nav">
+          <a href="/" class="author">
+            <div id="author-name-wrapper">
+              <h2 class="author-name" id="author-name-text">
+                
+                <div class="author-name-char">J</div>
+                <div class="author-name-char">a</div>
+                <div class="author-name-char">n</div>
+                <div class="author-name-char">e</div>
+                <div class="author-name-char">s</div>
+                <div class="author-name-char">s</div>
+                <div class="author-name-char">a</div>
+                <div class="author-name-char"></div>
+                <div class="author-name-char">T</div>
+                <div class="author-name-char">r</div>
+                <div class="author-name-char">a</div>
+                <div class="author-name-char">n</div>
+                <div class="author-name-char | smiley">☺&#xFE0E;</div>
+              </h2>
+            </div>
+          </a>
+
+          <nav class="gap-xl" id="nav-wrapper">
+            <ul class="nav">
+              <li>
+                <a href="/#" class="color-slide">about</a>
+              </li>
+              <li>
+                <a href="/words" class="color-slide">thoughts</a>
+              </li>
+              <li>
+                <a href="/inspiration" class="color-slide">inspiration</a>
+              </li>
+              <li>
+                <p class="float-right">CREATIVE SOFTWARE DEVELOPER
+                </p>
+              </li>
+            </u>
+          </nav>
+        </header>
+      </div>
+
+      <div class="content">
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
-      <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
-      <p><em>This is the fifth post in my series on learning html game development. You can find the other posts <a href="https://www.janessatran.com/tags/#game-dev">here</a>!</em></p>
+        <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
+        <p><em>This is the fifth post in my series on learning html game development. You can find the other posts <a href="https://www.janessatran.com/tags/#game-dev">here</a>!</em></p>
 <p>This next section is going to cover how to add an animation that plays when the hero, Leat, dies by running into a spider. Previous to this feature addition, running into a spider simply caused the level to reload. It's clear from the level-reload that something went wrong, but adding in an animation <em>before</em> that happens also clarifies that touching spiders is bad (at least in this game... and personally I would argue in real life but maybe I just really don't like spiders). If you're interested in how to add this feature to your game, just keep reading!</p>
 <h2>Adding an animation to the Hero Sprite</h2>
 <p>To add an animation, we use the <a href="https://phaser.io/docs/2.6.2/Phaser.AnimationManager.html#add">add</a> method from <code>Phaser.Animation</code>:</p>
@@ -153,10 +170,41 @@ It is called immediately after <code>preUpdate</code> and before <code>postUpdat
 <li><strong>Link to game</strong>: <a href="https://janessatran.github.io/html5game/">Adventures of Leat</a></li>
 </ul>
 
-    </header>
+      </div>
 
-  
-  </main>
+    </main>
 
-</body>
+    <script>
+      // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+      window.onscroll = function () {
+        scrollFunction()
+      };
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+          document
+            .getElementById("author-name-wrapper")
+            .style
+            .margin = "10px";
+          document
+            .getElementById("author-name-text")
+            .style
+            .fontSize = "2rem";
+          document
+            .getElementById("nav-wrapper")
+            .style
+            .marginBottom = "0";
+        } else {
+          document
+            .getElementById("author-name-wrapper")
+            .style
+            .margin = "50px";
+          document
+            .getElementById("author-name-text")
+            .style
+            .fontSize = "4rem";
+        }
+      }
+    </script>
+  </body>
 </html>

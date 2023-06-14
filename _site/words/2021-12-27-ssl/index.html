@@ -1,46 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <link rel="stylesheet" href="/css/style.css">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Grab title from the page data and dump it here -->
-  <title>Using websites with the lock symbol</title>
-</head>
-<body>
-  <main>
-    <header class="gap-m">
-      <a href="/" class="author">
-      <div class="author"> 
-        <h2 class="author-name"> 
-          <div class="author-name-char">J</div> 
-          <div class="author-name-char">a</div> 
-          <div class="author-name-char">n</div> 
-          <div class="author-name-char">e</div> 
-          <div class="author-name-char">s</div> 
-          <div class="author-name-char">s</div> 
-          <div class="author-name-char">a</div> 
-          <div class="author-name-char"> </div> 
-          <div class="author-name-char">T</div> 
-          <div class="author-name-char">r</div> 
-          <div class="author-name-char">a</div> 
-          <div class="author-name-char">n</div> 
-          <div class="author-name-char | smiley">☺&#xFE0E;</div> 
-        </h2>
-      </div>
-      </a>
+  <head>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Grab title from the page data and dump it here -->
+    <title>Using websites with the lock symbol</title>
+  </head>
+  <body>
+    <main>
 
-      <nav class="gap-xl">
-        <ul class="nav">
-          <li><a href="/words" class="color-slide">words</a></li>
-          <li><a href="/works" class="color-slide">works</a></li>
-          <li><a href="/inspiration" class="color-slide">inspiration</a></li>
-        </u>
-      </nav>
+      <header class="gap-m">
+        <div class="title-and-nav">
+          <a href="/" class="author">
+            <div id="author-name-wrapper">
+              <h2 class="author-name" id="author-name-text">
+                
+                <div class="author-name-char">J</div>
+                <div class="author-name-char">a</div>
+                <div class="author-name-char">n</div>
+                <div class="author-name-char">e</div>
+                <div class="author-name-char">s</div>
+                <div class="author-name-char">s</div>
+                <div class="author-name-char">a</div>
+                <div class="author-name-char"></div>
+                <div class="author-name-char">T</div>
+                <div class="author-name-char">r</div>
+                <div class="author-name-char">a</div>
+                <div class="author-name-char">n</div>
+                <div class="author-name-char | smiley">☺&#xFE0E;</div>
+              </h2>
+            </div>
+          </a>
+
+          <nav class="gap-xl" id="nav-wrapper">
+            <ul class="nav">
+              <li>
+                <a href="/#" class="color-slide">about</a>
+              </li>
+              <li>
+                <a href="/words" class="color-slide">thoughts</a>
+              </li>
+              <li>
+                <a href="/inspiration" class="color-slide">inspiration</a>
+              </li>
+              <li>
+                <p class="float-right">CREATIVE SOFTWARE DEVELOPER
+                </p>
+              </li>
+            </u>
+          </nav>
+        </header>
+      </div>
+
+      <div class="content">
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
-      <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
-      <p>Over winter break, a discussion arose regarding data and security on the internet. My almost-but-not-technically brother-in-law advised his Mom to only shop on websites that show a lock symbol next to the URL. She mentioned she had heard that meant the website was secure, but wasn't sure exactly what it was or how it was secured. So, what is the lock symbol and what does it signify?</p>
+        <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
+        <p>Over winter break, a discussion arose regarding data and security on the internet. My almost-but-not-technically brother-in-law advised his Mom to only shop on websites that show a lock symbol next to the URL. She mentioned she had heard that meant the website was secure, but wasn't sure exactly what it was or how it was secured. So, what is the lock symbol and what does it signify?</p>
 <h2>SSL/TLS</h2>
 <p>A website that shows a lock symbol next to the URL in the search bar is one which implements SSL/TLS. SSL, or Secure Sockets Layer, is an encryption-based security protocol for the purpose of ensuring privacy, authentication, and data integrity on the internet. Almost every website on the internet transfers sensitive user information, such as payment details, login credentials, credit card information, etc. SSL/TLS protects the information by encrypting the data transfer between a user's browser and the website.</p>
 <h2>What's the difference between SSL and TLS?</h2>
@@ -53,10 +70,41 @@
 <h2>In Summary</h2>
 <p>SSL (Secure Sockets Layer) is an encryption technology used by websites to secure the connection between the website and their visitors.</p>
 
-    </header>
+      </div>
 
-  
-  </main>
+    </main>
 
-</body>
+    <script>
+      // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+      window.onscroll = function () {
+        scrollFunction()
+      };
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+          document
+            .getElementById("author-name-wrapper")
+            .style
+            .margin = "10px";
+          document
+            .getElementById("author-name-text")
+            .style
+            .fontSize = "2rem";
+          document
+            .getElementById("nav-wrapper")
+            .style
+            .marginBottom = "0";
+        } else {
+          document
+            .getElementById("author-name-wrapper")
+            .style
+            .margin = "50px";
+          document
+            .getElementById("author-name-text")
+            .style
+            .fontSize = "4rem";
+        }
+      }
+    </script>
+  </body>
 </html>

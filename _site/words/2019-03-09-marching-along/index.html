@@ -1,46 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <link rel="stylesheet" href="/css/style.css">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Grab title from the page data and dump it here -->
-  <title>Still (March)ing Along...</title>
-</head>
-<body>
-  <main>
-    <header class="gap-m">
-      <a href="/" class="author">
-      <div class="author"> 
-        <h2 class="author-name"> 
-          <div class="author-name-char">J</div> 
-          <div class="author-name-char">a</div> 
-          <div class="author-name-char">n</div> 
-          <div class="author-name-char">e</div> 
-          <div class="author-name-char">s</div> 
-          <div class="author-name-char">s</div> 
-          <div class="author-name-char">a</div> 
-          <div class="author-name-char"> </div> 
-          <div class="author-name-char">T</div> 
-          <div class="author-name-char">r</div> 
-          <div class="author-name-char">a</div> 
-          <div class="author-name-char">n</div> 
-          <div class="author-name-char | smiley">☺&#xFE0E;</div> 
-        </h2>
-      </div>
-      </a>
+  <head>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Grab title from the page data and dump it here -->
+    <title>Still (March)ing Along...</title>
+  </head>
+  <body>
+    <main>
 
-      <nav class="gap-xl">
-        <ul class="nav">
-          <li><a href="/words" class="color-slide">words</a></li>
-          <li><a href="/works" class="color-slide">works</a></li>
-          <li><a href="/inspiration" class="color-slide">inspiration</a></li>
-        </u>
-      </nav>
+      <header class="gap-m">
+        <div class="title-and-nav">
+          <a href="/" class="author">
+            <div id="author-name-wrapper">
+              <h2 class="author-name" id="author-name-text">
+                
+                <div class="author-name-char">J</div>
+                <div class="author-name-char">a</div>
+                <div class="author-name-char">n</div>
+                <div class="author-name-char">e</div>
+                <div class="author-name-char">s</div>
+                <div class="author-name-char">s</div>
+                <div class="author-name-char">a</div>
+                <div class="author-name-char"></div>
+                <div class="author-name-char">T</div>
+                <div class="author-name-char">r</div>
+                <div class="author-name-char">a</div>
+                <div class="author-name-char">n</div>
+                <div class="author-name-char | smiley">☺&#xFE0E;</div>
+              </h2>
+            </div>
+          </a>
+
+          <nav class="gap-xl" id="nav-wrapper">
+            <ul class="nav">
+              <li>
+                <a href="/#" class="color-slide">about</a>
+              </li>
+              <li>
+                <a href="/words" class="color-slide">thoughts</a>
+              </li>
+              <li>
+                <a href="/inspiration" class="color-slide">inspiration</a>
+              </li>
+              <li>
+                <p class="float-right">CREATIVE SOFTWARE DEVELOPER
+                </p>
+              </li>
+            </u>
+          </nav>
+        </header>
+      </div>
+
+      <div class="content">
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
-      <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
-      <p>Hi, friends! I thought it'd be a good time to check in because I'm at half-way mark of the #100DaysOfCode challenge (I can't believe it!).
+        <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
+        <p>Hi, friends! I thought it'd be a good time to check in because I'm at half-way mark of the #100DaysOfCode challenge (I can't believe it!).
 It has been a fun journey so far learning new programming skills, learning about myself, and learning about what progress I can make with consistent practice.
 As I continue this challenge, I now have a better idea of the skills I want to hone in on and generally how I plan to move forward with the challenege in general.</p>
 <p>Since my last check-in, I've wrapped up the Web Development 101 course through The Odin Project, built a <a href="https://serene-retreat-61008.herokuapp.com/articles">blog</a> with Ruby on Rails, and built a <a href="https://janessatran.github.io/pomdoro-timer/">Pomdoro Timer</a> as the capstone project! Yay!
@@ -66,10 +83,41 @@ So, moving forward, I might give myself some more space when I really feel spent
 <p>Another thing I would like is to spend more time taking notes / creating cheat sheets for myself.
 This will mean spending less time coding and more time reading code / writing about it, but as with every skill there needs to be a balance between practice and studying to get good at it.</p>
 
-    </header>
+      </div>
 
-  
-  </main>
+    </main>
 
-</body>
+    <script>
+      // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+      window.onscroll = function () {
+        scrollFunction()
+      };
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+          document
+            .getElementById("author-name-wrapper")
+            .style
+            .margin = "10px";
+          document
+            .getElementById("author-name-text")
+            .style
+            .fontSize = "2rem";
+          document
+            .getElementById("nav-wrapper")
+            .style
+            .marginBottom = "0";
+        } else {
+          document
+            .getElementById("author-name-wrapper")
+            .style
+            .margin = "50px";
+          document
+            .getElementById("author-name-text")
+            .style
+            .fontSize = "4rem";
+        }
+      }
+    </script>
+  </body>
 </html>

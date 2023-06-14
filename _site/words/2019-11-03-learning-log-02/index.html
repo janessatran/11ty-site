@@ -1,46 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <link rel="stylesheet" href="/css/style.css">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Grab title from the page data and dump it here -->
-  <title>Learning Log (02) - `chmod` and binary</title>
-</head>
-<body>
-  <main>
-    <header class="gap-m">
-      <a href="/" class="author">
-      <div class="author"> 
-        <h2 class="author-name"> 
-          <div class="author-name-char">J</div> 
-          <div class="author-name-char">a</div> 
-          <div class="author-name-char">n</div> 
-          <div class="author-name-char">e</div> 
-          <div class="author-name-char">s</div> 
-          <div class="author-name-char">s</div> 
-          <div class="author-name-char">a</div> 
-          <div class="author-name-char"> </div> 
-          <div class="author-name-char">T</div> 
-          <div class="author-name-char">r</div> 
-          <div class="author-name-char">a</div> 
-          <div class="author-name-char">n</div> 
-          <div class="author-name-char | smiley">☺&#xFE0E;</div> 
-        </h2>
-      </div>
-      </a>
+  <head>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Grab title from the page data and dump it here -->
+    <title>Learning Log (02) - `chmod` and binary</title>
+  </head>
+  <body>
+    <main>
 
-      <nav class="gap-xl">
-        <ul class="nav">
-          <li><a href="/words" class="color-slide">words</a></li>
-          <li><a href="/works" class="color-slide">works</a></li>
-          <li><a href="/inspiration" class="color-slide">inspiration</a></li>
-        </u>
-      </nav>
+      <header class="gap-m">
+        <div class="title-and-nav">
+          <a href="/" class="author">
+            <div id="author-name-wrapper">
+              <h2 class="author-name" id="author-name-text">
+                
+                <div class="author-name-char">J</div>
+                <div class="author-name-char">a</div>
+                <div class="author-name-char">n</div>
+                <div class="author-name-char">e</div>
+                <div class="author-name-char">s</div>
+                <div class="author-name-char">s</div>
+                <div class="author-name-char">a</div>
+                <div class="author-name-char"></div>
+                <div class="author-name-char">T</div>
+                <div class="author-name-char">r</div>
+                <div class="author-name-char">a</div>
+                <div class="author-name-char">n</div>
+                <div class="author-name-char | smiley">☺&#xFE0E;</div>
+              </h2>
+            </div>
+          </a>
+
+          <nav class="gap-xl" id="nav-wrapper">
+            <ul class="nav">
+              <li>
+                <a href="/#" class="color-slide">about</a>
+              </li>
+              <li>
+                <a href="/words" class="color-slide">thoughts</a>
+              </li>
+              <li>
+                <a href="/inspiration" class="color-slide">inspiration</a>
+              </li>
+              <li>
+                <p class="float-right">CREATIVE SOFTWARE DEVELOPER
+                </p>
+              </li>
+            </u>
+          </nav>
+        </header>
+      </div>
+
+      <div class="content">
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
-      <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
-      <p>Hello again, friend! I'm learning a lot of new things in my new role and it's great!! One of the things that stands out from last week that I learned was about permission settings on files and the unix command <code>chmod</code>, as well as how binary works in general. This post will be a summary of those key things.</p>
+        <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
+        <p>Hello again, friend! I'm learning a lot of new things in my new role and it's great!! One of the things that stands out from last week that I learned was about permission settings on files and the unix command <code>chmod</code>, as well as how binary works in general. This post will be a summary of those key things.</p>
 <h3>What is binary?</h3>
 <p>A binary number is a number expressed in the base-2 numeral system (aka binary numeral system), which uses only two symbols: zero and one. BUilding binary numbers looks like:</p>
 <table>
@@ -206,10 +223,41 @@ drwxr-xr-x    3 janessatran  staff     102 Oct 26 16:57 vendor
 </table>
 <p>So, if I wanted to give each group read, write, execute access to my file, I'd use the command <code>chmod 777 filename</code>. NEAT!!!</p>
 
-    </header>
+      </div>
 
-  
-  </main>
+    </main>
 
-</body>
+    <script>
+      // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+      window.onscroll = function () {
+        scrollFunction()
+      };
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+          document
+            .getElementById("author-name-wrapper")
+            .style
+            .margin = "10px";
+          document
+            .getElementById("author-name-text")
+            .style
+            .fontSize = "2rem";
+          document
+            .getElementById("nav-wrapper")
+            .style
+            .marginBottom = "0";
+        } else {
+          document
+            .getElementById("author-name-wrapper")
+            .style
+            .margin = "50px";
+          document
+            .getElementById("author-name-text")
+            .style
+            .fontSize = "4rem";
+        }
+      }
+    </script>
+  </body>
 </html>

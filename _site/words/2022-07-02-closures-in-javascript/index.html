@@ -1,46 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <link rel="stylesheet" href="/css/style.css">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Grab title from the page data and dump it here -->
-  <title>Understanding Closures</title>
-</head>
-<body>
-  <main>
-    <header class="gap-m">
-      <a href="/" class="author">
-      <div class="author"> 
-        <h2 class="author-name"> 
-          <div class="author-name-char">J</div> 
-          <div class="author-name-char">a</div> 
-          <div class="author-name-char">n</div> 
-          <div class="author-name-char">e</div> 
-          <div class="author-name-char">s</div> 
-          <div class="author-name-char">s</div> 
-          <div class="author-name-char">a</div> 
-          <div class="author-name-char"> </div> 
-          <div class="author-name-char">T</div> 
-          <div class="author-name-char">r</div> 
-          <div class="author-name-char">a</div> 
-          <div class="author-name-char">n</div> 
-          <div class="author-name-char | smiley">☺&#xFE0E;</div> 
-        </h2>
-      </div>
-      </a>
+  <head>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Grab title from the page data and dump it here -->
+    <title>Understanding Closures</title>
+  </head>
+  <body>
+    <main>
 
-      <nav class="gap-xl">
-        <ul class="nav">
-          <li><a href="/words" class="color-slide">words</a></li>
-          <li><a href="/works" class="color-slide">works</a></li>
-          <li><a href="/inspiration" class="color-slide">inspiration</a></li>
-        </u>
-      </nav>
+      <header class="gap-m">
+        <div class="title-and-nav">
+          <a href="/" class="author">
+            <div id="author-name-wrapper">
+              <h2 class="author-name" id="author-name-text">
+                
+                <div class="author-name-char">J</div>
+                <div class="author-name-char">a</div>
+                <div class="author-name-char">n</div>
+                <div class="author-name-char">e</div>
+                <div class="author-name-char">s</div>
+                <div class="author-name-char">s</div>
+                <div class="author-name-char">a</div>
+                <div class="author-name-char"></div>
+                <div class="author-name-char">T</div>
+                <div class="author-name-char">r</div>
+                <div class="author-name-char">a</div>
+                <div class="author-name-char">n</div>
+                <div class="author-name-char | smiley">☺&#xFE0E;</div>
+              </h2>
+            </div>
+          </a>
+
+          <nav class="gap-xl" id="nav-wrapper">
+            <ul class="nav">
+              <li>
+                <a href="/#" class="color-slide">about</a>
+              </li>
+              <li>
+                <a href="/words" class="color-slide">thoughts</a>
+              </li>
+              <li>
+                <a href="/inspiration" class="color-slide">inspiration</a>
+              </li>
+              <li>
+                <p class="float-right">CREATIVE SOFTWARE DEVELOPER
+                </p>
+              </li>
+            </u>
+          </nav>
+        </header>
+      </div>
+
+      <div class="content">
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
-      <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
-      <p>If you were to ask me last week about closures in JavaScript...</p>
+        <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
+        <p>If you were to ask me last week about closures in JavaScript...</p>
 <img src="https://miro.medium.com/max/1200/1*UDzgsQXxvWyJ0NQ8xp27ZA.jpeg" />
 <p>Let's change that!</p>
 <h2>What is a Closure?</h2>
@@ -108,10 +125,41 @@ a.validateRequest(&quot;authKey&quot;); // Authorizing access
 	<img src="https://i.imgur.com/KGgYGks.jpg" style="margin: 0 auto;" />
 </center>
 
-    </header>
+      </div>
 
-  
-  </main>
+    </main>
 
-</body>
+    <script>
+      // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+      window.onscroll = function () {
+        scrollFunction()
+      };
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+          document
+            .getElementById("author-name-wrapper")
+            .style
+            .margin = "10px";
+          document
+            .getElementById("author-name-text")
+            .style
+            .fontSize = "2rem";
+          document
+            .getElementById("nav-wrapper")
+            .style
+            .marginBottom = "0";
+        } else {
+          document
+            .getElementById("author-name-wrapper")
+            .style
+            .margin = "50px";
+          document
+            .getElementById("author-name-text")
+            .style
+            .fontSize = "4rem";
+        }
+      }
+    </script>
+  </body>
 </html>

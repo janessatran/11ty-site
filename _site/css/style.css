@@ -197,20 +197,17 @@ a {
   text-align: center;
 }
 
+.billboard {
+  background-color: white;
+  transform: skew(0deg, 30deg) scaley(1.2) !important;
+}
+
 .author {
-  margin-top: 6.3rem;
-  margin-bottom: 3rem;
   text-align: center;
 }
 
 .smiley {
   font-weight: 300;
-}
-
-@media screen and (max-width: 768px) {
-  .author {
-    margin-bottom: 3em;
-  }
 }
 
 .author .author-avatar {
@@ -228,8 +225,7 @@ a {
 }
 
 .author .author-name {
-  font-size: 3rem;
-  margin-bottom: 2px;
+  font-size: 4.5rem;
   font-family: "Poppins", sans-serif;
   letter-spacing: 0.1em;
 }
@@ -245,7 +241,7 @@ a {
   display: inline-block;
 }
 
-.author:hover .author-name-char {
+.author .author-name-char {
   animation: letterdrift 1.5s infinite alternate ease-in-out;
 }
 
@@ -271,23 +267,61 @@ a {
   }
 }
 
+.content {
+  margin-top: 400px;
+}
+
 /* Nav */
+
+.title-and-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-light);
+}
+
+.title-and-nav > a {
+  padding: 0 !important;
+}
+
 ul.nav {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  border: 1px solid black;
 }
 
 ul.nav > li {
   float: left;
+  border-left: 1px solid black;
+}
+
+ul.nav > li:first-child {
+  border-left: none;
+}
+
+ul.nav > li:nth-last-child(2) {
+  border-right: 1px solid black;
+}
+
+ul.nav > li:last-child {
+  flex-basis: max-content;
+  border: none;
+  margin-left: auto;
+  padding-right: 1rem;
+  display: flex;
+  font-family: "Poppins";
+  font-weight: bold;
+  text-transform: lowercase;
 }
 
 ul.nav > li a {
   display: block;
-  padding-inline-end: 1rem;
+  padding-inline: 1rem;
 }
 
 /* IG Embeds */
