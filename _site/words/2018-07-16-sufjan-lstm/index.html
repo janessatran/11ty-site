@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/code.css">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,13 +35,18 @@
       <nav class="gap-xl">
         <ul class="nav">
           <li><a href="/inspiration" class="color-slide">inspiration</a></li>
+          <li><a href="/words" class="color-slide">archive</a></li>
           <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
           <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
         </u>
       </nav>
+
+    </header>
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
       <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
-      <p>If I had to name my favorite musician in the entire world, I would probably say it is Sufjan Stevens. He is an Oscar-nominated, indie/folk/electronic/alternative, multiinstrumentalist and musician. He also has a singing voice that is so soft and angelic, you can't help but feel you've transcended this sphere you inhabit (or maybe that's just me). At the core of it all, however, what attracts me to Sufjan's music the most is he is fundamentally a storyteller through song. He has written two albums after states in the US (Illinois and Michigan), an album in the perspective of the planets in the universe, an album about the loss of his mother (and an ode to Oregon), among many other albums. For this reason, I thought it would be interesting to attempt to create a model that could generate lyrics of the artistic, story-telling caliber of Sufjan Stevens.</p>
+      <div class="content">
+      <div class="journal-content">
+  <p>If I had to name my favorite musician in the entire world, I would probably say it is Sufjan Stevens. He is an Oscar-nominated, indie/folk/electronic/alternative, multiinstrumentalist and musician. He also has a singing voice that is so soft and angelic, you can't help but feel you've transcended this sphere you inhabit (or maybe that's just me). At the core of it all, however, what attracts me to Sufjan's music the most is he is fundamentally a storyteller through song. He has written two albums after states in the US (Illinois and Michigan), an album in the perspective of the planets in the universe, an album about the loss of his mother (and an ode to Oregon), among many other albums. For this reason, I thought it would be interesting to attempt to create a model that could generate lyrics of the artistic, story-telling caliber of Sufjan Stevens.</p>
 <p align="center">
  <img src="https://i.imgur.com/KlhtxfB.gif" alt="Sufjan saying Fantastic!" width="80%">
 </p>
@@ -281,8 +287,8 @@ do i care if i despise this?
 Overall, it was relatively easy to get a create a model that generated understandable words. Running 100 epochs took less than 20 minutes to train. In the future, I'd like to incorporate other artists' works into the dataset in order to increase the number of patterns in the hopes of generating original lyrics. All in all, however, this was a really good learning exercise for understanding how LSTMs work!
 <p>Thanks for reading :)</p>
 
-    </header>
-
+</div>
+      </div>
   
   </main>
 

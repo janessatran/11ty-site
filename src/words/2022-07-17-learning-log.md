@@ -1,5 +1,5 @@
 ---
-layout: layout.njk
+layout: journal.njk
 title: Learning Log
 author: Janessa
 date: 2022-07-17

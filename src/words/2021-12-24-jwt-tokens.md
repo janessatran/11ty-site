@@ -2,7 +2,7 @@
 date: 2021-12-23
 title: "JWT Tokens"
 tags: blog
-layout: layout.njk
+layout: journal.njk
 ---
 
 Recently at work we bootstrapped a new API and discussed what authentication methods we should use. JWT came up, and I didn't know about it, so here's what I learned.

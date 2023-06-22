@@ -1,5 +1,5 @@
 ---
-layout: layout.njk
+layout: journal.njk
 title: Decorator Pattern in Ruby on Rails
 author: Janessa
 date: 2020-11-06

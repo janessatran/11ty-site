@@ -1,5 +1,5 @@
 ---
-layout: layout.njk
+layout: journal.njk
 title: Useful Rails Console Commands
 author: Janessa
 date: 2021-02-03

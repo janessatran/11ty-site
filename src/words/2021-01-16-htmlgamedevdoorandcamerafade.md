@@ -1,5 +1,5 @@
 ---
-layout: layout.njk
+layout: journal.njk
 title: Adding a door animation and camera fade
 author: Janessa
 date: 2021-01-16

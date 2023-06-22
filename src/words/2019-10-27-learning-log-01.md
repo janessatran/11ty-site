@@ -1,5 +1,5 @@
 ---
-layout: layout.njk
+layout: journal.njk
 title: Learning Log (01)
 author: Janessa
 date: 2019-10-27

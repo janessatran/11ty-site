@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/code.css">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,13 +35,18 @@
       <nav class="gap-xl">
         <ul class="nav">
           <li><a href="/inspiration" class="color-slide">inspiration</a></li>
+          <li><a href="/words" class="color-slide">archive</a></li>
           <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
           <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
         </u>
       </nav>
+
+    </header>
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
       <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
-      <p><em>Psst! This is the fourth post in my series on learning html game development. You can find the other posts <a href="https://www.janessatran.com/tags/#game-dev">here</a>!</em></p>
+      <div class="content">
+      <div class="journal-content">
+  <p><em>Psst! This is the fourth post in my series on learning html game development. You can find the other posts <a href="https://www.janessatran.com/tags/#game-dev">here</a>!</em></p>
 <p>This next section is going to cover how I added the ability to &quot;high jump&quot; (or fly, because you can technically continue to stay in the air 😂) into the game. This was probably one of the trickier features for me to figure out how to implement, partially due to my lack of experience with playing games and not knowing what a &quot;high jump&quot; even is. Nevertheless... let's get into how to add this feature!</p>
 <h2>Enabling Flappy Bird Mode</h2>
 <p>In this game, a &quot;high jump&quot; is essentially having the ability to jump while you are already jumping. Theoretically, this means you can continuously jump while already &quot;jumping&quot;, emulating a flappy-bird-like flying motion. Jumping is initiated when the user presses the up-arrow key. In order to add a &quot;high jump&quot;, then, we need to check if the player is already jumping to boost it.</p>
@@ -94,8 +100,8 @@ Source: [https://phaser.io/docs/2.6.2/Phaser.Key.html#duration](https://phaser.i
 <li><strong>Link to game</strong>: <a href="https://janessatran.github.io/html5game/">Adventures of Leat</a></li>
 </ul>
 
-    </header>
-
+</div>
+      </div>
   
   </main>
 

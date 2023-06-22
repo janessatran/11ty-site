@@ -1,5 +1,5 @@
 ---
-layout: layout.njk
+layout: journal.njk
 title: Making a Responsive Layout with CSS Grid
 author: Janessa
 date: 2021-01-09

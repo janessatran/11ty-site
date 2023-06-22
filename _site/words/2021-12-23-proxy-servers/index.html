@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/code.css">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,13 +35,18 @@
       <nav class="gap-xl">
         <ul class="nav">
           <li><a href="/inspiration" class="color-slide">inspiration</a></li>
+          <li><a href="/words" class="color-slide">archive</a></li>
           <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
           <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
         </u>
       </nav>
+
+    </header>
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
       <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
-      <p>During a project at work, my teammate and I were having issues trying to connect to an API that was behind a VPN. The question of whether or not our the request was going through a proxy server came up. I hadn't heard of a proxy server before so I thought I would write about what it is.</p>
+      <div class="content">
+      <div class="journal-content">
+  <p>During a project at work, my teammate and I were having issues trying to connect to an API that was behind a VPN. The question of whether or not our the request was going through a proxy server came up. I hadn't heard of a proxy server before so I thought I would write about what it is.</p>
 <h2>What's a proxy server and how does it work?</h2>
 <p>A <strong>proxy server</strong> acts as a gateway between you and the internet.</p>
 <p>The way it works is, when you send a web request your request goes to the proxy server first. Then, the proxy server makes your web request on your behalf and collects the response from the web server. When the request is intercepted by the proxy, it may forward the request and it may modify it. Finally, the proxy server returns you the web page data.</p>
@@ -67,8 +73,8 @@ client-ip:
 <li><strong>Transparent proxies</strong>: These work without modifying the request and responses (which is why it's called transparent). You might have used a transparent proxy without realizing it. Employers, schools, libraries might set up a transparent proxy to filter user's content when they connect ot the internet or block users from accessing certain websites.</li>
 </ol>
 
-    </header>
-
+</div>
+      </div>
   
   </main>
 

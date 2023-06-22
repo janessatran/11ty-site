@@ -1,5 +1,5 @@
 ---
-layout: layout.njk
+layout: journal.njk
 title: New Year, New (The)me
 author: Janessa
 date: 2020-01-19

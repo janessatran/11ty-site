@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/code.css">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,13 +35,18 @@
       <nav class="gap-xl">
         <ul class="nav">
           <li><a href="/inspiration" class="color-slide">inspiration</a></li>
+          <li><a href="/words" class="color-slide">archive</a></li>
           <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
           <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
         </u>
       </nav>
+
+    </header>
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
       <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
-      <h2>Day 1: July 17, 2022</h2>
+      <div class="content">
+      <div class="journal-content">
+  <h2>Day 1: July 17, 2022</h2>
 <p><strong>Today's Progress</strong>: I read Chapter 7 of <a href="https://justjavascript.com/">Just JavaScript</a>, learning about Equality of Values. I also started learning how to use Inkscape as well as how to animate SVGs with JavaScript and CSS.</p>
 <p><strong>Thoughts</strong>: I really enjoy how interactive the reading is with Just JavaScript. Also, I can't help but notice how JS has so many quirks. For example, today I learned about the strict equality operator's special cases where <code>NaN === NaN</code> returns false and <code>0 === -0</code> returns true. What?!</p>
 <p>Learning InkScape was not too difficult and pretty fun. I made a bat and I was prett happy with how it turned out. It's relatively easy to look things up for InkScape! The codepen I created was complaining about the SVG not being real HTML, and I learned it's because I had exported the image as an InkScape SVG instead of plain SVG, meaning it includes a few properties that are specific to InkScape and technically not HTML. I ended up keeping it as an InkScape SVG because without that type of export, the image didn't include the namespaces I was querying off of to select the pupils. I know I could add some selector classes off the plain SVG, but the effort was pretty manual so maybe I'll just do that next time 😆</p>
@@ -105,8 +111,8 @@
 <p><strong>Today's Progress</strong>: Happy August!! Today I went through a RemixJS tutorial, specifically this <a href="https://remix.run/docs/en/v1/tutorials/blog">Developer Blog</a> one.</p>
 <p><strong>Thoughts</strong>: RemixJS is pretty interesting. I see some parallels with Ruby on Rails with the route pages representing the views. I went through the tutorial but haven't done any of the &quot;homework&quot; tasks. I may go through those at some point.</p>
 
-    </header>
-
+</div>
+      </div>
   
   </main>
 

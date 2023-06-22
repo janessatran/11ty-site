@@ -1,5 +1,5 @@
 ---
-layout: layout.njk
+layout: journal.njk
 title: Learning Log (03) - Rails AntiPatterns, Model layer code
 author: Janessa
 date: 2019-11-10

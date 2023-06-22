@@ -1,5 +1,5 @@
 ---
-layout: layout.njk
+layout: journal.njk
 title: Learning Log (04) - Rails AntiPatterns, Using modules and classes
 author: Janessa
 date: 2019-11-17

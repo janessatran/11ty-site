@@ -1,5 +1,5 @@
 ---
-layout: layout.njk
+layout: journal.njk
 title: Learning HTML Game Development - The Beginning
 author: Janessa
 date: 2021-01-02

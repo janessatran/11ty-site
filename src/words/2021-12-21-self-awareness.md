@@ -2,7 +2,7 @@
 date: 2021-12-21
 title: "Self-awareness"
 tags: blog
-layout: layout.njk
+layout: journal.njk
 ---
 
 > “Knowing yourself is the beginning of all wisdom.” - Aristotle

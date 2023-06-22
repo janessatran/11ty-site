@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/code.css">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,13 +35,18 @@
       <nav class="gap-xl">
         <ul class="nav">
           <li><a href="/inspiration" class="color-slide">inspiration</a></li>
+          <li><a href="/words" class="color-slide">archive</a></li>
           <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
           <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
         </u>
       </nav>
+
+    </header>
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
       <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
-      <p>When deciding what type of database to use for an application system, it's important to know about the strengths and weaknesses of your options. The main two types are SQL (relational database) and NoSQL (non-relational / distributed database).</p>
+      <div class="content">
+      <div class="journal-content">
+  <p>When deciding what type of database to use for an application system, it's important to know about the strengths and weaknesses of your options. The main two types are SQL (relational database) and NoSQL (non-relational / distributed database).</p>
 <h2>SQL</h2>
 <p>SQL Databases are also known as relational databases. Examples of popular SQL databases include MySQL, PostgreSQL, Microsoft SQL Server, Oracle, CockroachDB. They offer strength in the following areas:</p>
 <ol>
@@ -81,8 +87,8 @@ COMMIT TRANSACTION
 <p><strong><em>Health Care Company Info</em></strong>: We want a database to maintain information about the different offices for health care provider company. The offices are in different states and have many doctors who work with multiple patients. What type of database should be used?</p>
 <p><strong>SQL.</strong> There are many relations in the schema that are apparent: An Office has many Doctors, a Doctor has many Patients, and a Patient has many health records.</p>
 
-    </header>
-
+</div>
+      </div>
   
   </main>
 

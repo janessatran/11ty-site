@@ -1,5 +1,5 @@
 ---
-layout: layout.njk
+layout: journal.njk
 title: Sprucing up the Win Screen
 author: Janessa
 date: 2021-01-11

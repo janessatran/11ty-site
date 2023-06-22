@@ -1,5 +1,5 @@
 ---
-layout: layout.njk
+layout: journal.njk
 title: Adding the Ability to High Jump
 author: Janessa
 date: 2021-01-14

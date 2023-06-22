@@ -1,5 +1,5 @@
 ---
-layout: layout.njk
+layout: journal.njk
 title: Animating the Hero's Death
 author: Janessa
 date: 2021-01-15

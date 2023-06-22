@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/code.css">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,13 +35,18 @@
       <nav class="gap-xl">
         <ul class="nav">
           <li><a href="/inspiration" class="color-slide">inspiration</a></li>
+          <li><a href="/words" class="color-slide">archive</a></li>
           <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
           <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
         </u>
       </nav>
+
+    </header>
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
       <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
-      <p>If you've been following me along my journey of learning html game development, you know that I have been working on implementing additional features to my game <a href="https://janessatran.github.io/html5game">Adventures of Leat</a>. In this post, I will explain how I spruced up the Win State page using sprite sheet animations!</p>
+      <div class="content">
+      <div class="journal-content">
+  <p>If you've been following me along my journey of learning html game development, you know that I have been working on implementing additional features to my game <a href="https://janessatran.github.io/html5game">Adventures of Leat</a>. In this post, I will explain how I spruced up the Win State page using sprite sheet animations!</p>
 <p><em>If you haven't been following along or just have no idea what I am talking about, you can read the first part of this GameDev blog series in my <a href="https://www.janessatran.com/htmlgamedevelopment/">original post about learning game development</a></em></p>
 <h2>What do you mean by &quot;sprucing up&quot;?</h2>
 <p>If you play the game, you go around avoiding spiders, collecting keys to open doors, and collecting coins along the way. I wanted to add some pizzazz to the win screen by showing the tally of coins Leat collects at the end of the game, ideally with an animated coin to make it more exciting!</p>
@@ -120,8 +126,8 @@ animatedCoinIcon.animations.add(&quot;rotate&quot;, [0, 1, 2, 1], 6, true);
 <h2>Woohoo!</h2>
 <p>There you have it! We now have a spruced up win page which tells the player how many coins they collected with a neat animation to jazz things up!</p>
 
-    </header>
-
+</div>
+      </div>
   
   </main>
 

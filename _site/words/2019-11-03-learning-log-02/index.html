@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/code.css">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,13 +35,18 @@
       <nav class="gap-xl">
         <ul class="nav">
           <li><a href="/inspiration" class="color-slide">inspiration</a></li>
+          <li><a href="/words" class="color-slide">archive</a></li>
           <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
           <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
         </u>
       </nav>
+
+    </header>
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
       <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
-      <p>Hello again, friend! I'm learning a lot of new things in my new role and it's great!! One of the things that stands out from last week that I learned was about permission settings on files and the unix command <code>chmod</code>, as well as how binary works in general. This post will be a summary of those key things.</p>
+      <div class="content">
+      <div class="journal-content">
+  <p>Hello again, friend! I'm learning a lot of new things in my new role and it's great!! One of the things that stands out from last week that I learned was about permission settings on files and the unix command <code>chmod</code>, as well as how binary works in general. This post will be a summary of those key things.</p>
 <h3>What is binary?</h3>
 <p>A binary number is a number expressed in the base-2 numeral system (aka binary numeral system), which uses only two symbols: zero and one. BUilding binary numbers looks like:</p>
 <table>
@@ -206,8 +212,8 @@ drwxr-xr-x    3 janessatran  staff     102 Oct 26 16:57 vendor
 </table>
 <p>So, if I wanted to give each group read, write, execute access to my file, I'd use the command <code>chmod 777 filename</code>. NEAT!!!</p>
 
-    </header>
-
+</div>
+      </div>
   
   </main>
 

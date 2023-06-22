@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/code.css">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,13 +35,18 @@
       <nav class="gap-xl">
         <ul class="nav">
           <li><a href="/inspiration" class="color-slide">inspiration</a></li>
+          <li><a href="/words" class="color-slide">archive</a></li>
           <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
           <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
         </u>
       </nav>
+
+    </header>
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
       <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
-      <p>Good morning my fellow readers! I'm continuing to go through Rails AntiPatterns and have more things I'd like to share as I'm learning. This post will be about how to simplify Models using modules and classes.</p>
+      <div class="content">
+      <div class="journal-content">
+  <p>Good morning my fellow readers! I'm continuing to go through Rails AntiPatterns and have more things I'd like to share as I'm learning. This post will be about how to simplify Models using modules and classes.</p>
 <h3>TL;DR</h3>
 <p>If you don't want to read the entire thing, this is what I've learned in a nutshell...
 To simplify Models:</p>
@@ -220,8 +226,8 @@ end
 <h3>Avoid large transaction blocks in Controllers and Models</h3>
 <p>Active Record supplies built-in transactions such as <strong>validations</strong>, which allow you to ensure that only valid data is stored in your database, and <strong>callbacks</strong>, which allows you to trigger logic before or after an alteration of an object's state. Employ these instead of create a block of transactions to run to avoid complexity!</p>
 
-    </header>
-
+</div>
+      </div>
   
   </main>
 

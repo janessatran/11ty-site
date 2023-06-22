@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/code.css">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,13 +35,18 @@
       <nav class="gap-xl">
         <ul class="nav">
           <li><a href="/inspiration" class="color-slide">inspiration</a></li>
+          <li><a href="/words" class="color-slide">archive</a></li>
           <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
           <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
         </u>
       </nav>
+
+    </header>
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
       <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
-      <p><em>This is the third post in my series on learning html game development. You can find the other posts <a href="/tags/#Game%20Dev">here</a>!</em></p>
+      <div class="content">
+      <div class="journal-content">
+  <p><em>This is the third post in my series on learning html game development. You can find the other posts <a href="/tags/#Game%20Dev">here</a>!</em></p>
 <p>While I don't play a lot of video games, video game music is honestly one of my favorite genres of music. I find it really great to work to (because it's upbeat/not distracting) and I also think sometimes it can really complete a game. To no surprise, I was pretty excited about this next feature which involves adding background music to the different game states (these starts are menu, play, and win)! If you'd like to learn how I did it, continue reading!</p>
 <h2>Getting the music</h2>
 <p>The first thing we need to do is obtain audio files which we can then load into the game. The website I used to download free audio is <a href="https://www.playonloop.com/">playonloop.com</a>. They have a section for royalty-free music and allow people to download free short versions of the audio. Once you download your audio files, move them into the development repo (I put mine under <code>/audio</code>) for easy access.</p>
@@ -133,8 +139,8 @@
 <h2>Summary</h2>
 <p>And there we have it! Each state in the game now has background music 😃 You can check it out yourself <a href="https://janessatran.github.io/html5game/">here</a>. If you have any suggestions or questions, feel free to reach out! Thanks for reading!</p>
 
-    </header>
-
+</div>
+      </div>
   
   </main>
 

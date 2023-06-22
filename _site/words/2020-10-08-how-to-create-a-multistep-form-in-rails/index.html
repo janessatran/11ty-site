@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/code.css">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,13 +35,18 @@
       <nav class="gap-xl">
         <ul class="nav">
           <li><a href="/inspiration" class="color-slide">inspiration</a></li>
+          <li><a href="/words" class="color-slide">archive</a></li>
           <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
           <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
         </u>
       </nav>
+
+    </header>
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
       <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
-      <p>Recently at work, I had to implement a sign-up form for user subscriptions. At first glance, it seemed really straightforward: create a form where a user enters their information and upon successful submission, decrease the number of subscription licenses associated with that user's account. Unsurprisingly, however, there were a lot of other requirements I had to meet and implementing this functionality turned out to be more complicated than I was expecting. For the sake of future me, and for the sake of whoever else might need to do something similar, I wanted to write out my approach to implementing the feature in this post. First things first, let's make sure we understand all the requirements... I'll list them all below!</p>
+      <div class="content">
+      <div class="journal-content">
+  <p>Recently at work, I had to implement a sign-up form for user subscriptions. At first glance, it seemed really straightforward: create a form where a user enters their information and upon successful submission, decrease the number of subscription licenses associated with that user's account. Unsurprisingly, however, there were a lot of other requirements I had to meet and implementing this functionality turned out to be more complicated than I was expecting. For the sake of future me, and for the sake of whoever else might need to do something similar, I wanted to write out my approach to implementing the feature in this post. First things first, let's make sure we understand all the requirements... I'll list them all below!</p>
 <h2>The Requirements to be met</h2>
 <ul>
 <li>User gets an email with a link they can go to in order to make a subscription.</li>
@@ -278,8 +284,8 @@ end
 end
 </code></pre>
 
-    </header>
-
+</div>
+      </div>
   
   </main>
 

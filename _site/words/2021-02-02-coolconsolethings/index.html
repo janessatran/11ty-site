@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/code.css">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,13 +35,18 @@
       <nav class="gap-xl">
         <ul class="nav">
           <li><a href="/inspiration" class="color-slide">inspiration</a></li>
+          <li><a href="/words" class="color-slide">archive</a></li>
           <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
           <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
         </u>
       </nav>
+
+    </header>
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
       <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
-      <p>I work a lot with the rails console and learned a few cool things you can do inside the console that I wanted to record. If you're unfamiliar with the <strong>rails console</strong>, it's a command that lets you interact with your Rails application from the command line.</p>
+      <div class="content">
+      <div class="journal-content">
+  <p>I work a lot with the rails console and learned a few cool things you can do inside the console that I wanted to record. If you're unfamiliar with the <strong>rails console</strong>, it's a command that lets you interact with your Rails application from the command line.</p>
 <h2>Useful Things You Can Do In Rails Console</h2>
 <p><strong>To clear the console:</strong> <code>CMD + R</code></p>
 <p><strong>To list available methods on an object:</strong> <code>ls</code></p>
@@ -55,8 +61,8 @@ app.get(app.root_path))
 </code></pre>
 <p>Similarly, you can call <code>helper</code> to get access to view helpers defined by you and also by rails (such as <code>link_to</code>)</p>
 
-    </header>
-
+</div>
+      </div>
   
   </main>
 

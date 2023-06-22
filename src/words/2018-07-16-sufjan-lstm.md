@@ -1,5 +1,5 @@
 ---
-layout: layout.njk
+layout: journal.njk
 title: Sufjan Stevens Lyrics Generator using a LSTM model
 author: Janessa
 date: 2018-07-16

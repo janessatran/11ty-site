@@ -2,7 +2,7 @@
 date: 2021-12-22
 title: "System Design: SQL vs NoSQL"
 tags: blog
-layout: layout.njk
+layout: journal.njk
 ---
 
 When deciding what type of database to use for an application system, it's important to know about the strengths and weaknesses of your options. The main two types are SQL (relational database) and NoSQL (non-relational / distributed database).

@@ -1,5 +1,5 @@
 ---
-layout: layout.njk
+layout: journal.njk
 title: Understanding Closures
 author: Janessa
 date: 2022-07-02

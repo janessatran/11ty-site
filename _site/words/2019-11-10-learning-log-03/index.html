@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/code.css">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,13 +35,18 @@
       <nav class="gap-xl">
         <ul class="nav">
           <li><a href="/inspiration" class="color-slide">inspiration</a></li>
+          <li><a href="/words" class="color-slide">archive</a></li>
           <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
           <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
         </u>
       </nav>
+
+    </header>
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
       <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
-      <p>Today I started reading a book called &quot;Rails AntiPatterns, Best Practice Ruby on Rails Refactoring&quot;. My goal with reading this book is to get a better sense of how to write more organized, clean code that makes sense to other people and is easier to maintain. In this post, I will share what I learned today from the book!</p>
+      <div class="content">
+      <div class="journal-content">
+  <p>Today I started reading a book called &quot;Rails AntiPatterns, Best Practice Ruby on Rails Refactoring&quot;. My goal with reading this book is to get a better sense of how to write more organized, clean code that makes sense to other people and is easier to maintain. In this post, I will share what I learned today from the book!</p>
 <h2>Follow the Law of Demeter, aka, &quot;use only one dot&quot;.</h2>
 <p>This law describes the concept that an object can call methods on a related object, but it should not reach through that object to call a method on a third related object.</p>
 <p>Example: Say that you have created a Rails app with different models like the following...</p>
@@ -171,8 +177,8 @@ end
 </code></pre>
 <p>This finder object pattern helps keep the model logic strictly related to a class' behavior, unlike before when we had a query for <code>Order</code> in our <code>User</code> controller. It also helps keep the controller's skinny.</p>
 
-    </header>
-
+</div>
+      </div>
   
   </main>
 

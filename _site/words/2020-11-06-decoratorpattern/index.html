@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/code.css">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,13 +35,18 @@
       <nav class="gap-xl">
         <ul class="nav">
           <li><a href="/inspiration" class="color-slide">inspiration</a></li>
+          <li><a href="/words" class="color-slide">archive</a></li>
           <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
           <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
         </u>
       </nav>
+
+    </header>
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
       <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
-      <h2>What is the Decorator Pattern?</h2>
+      <div class="content">
+      <div class="journal-content">
+  <h2>What is the Decorator Pattern?</h2>
 <p>It allows us to add functionality to an object of a class without affecting other instances of that class. The term &quot;decorator&quot; originates from the pattern of adding additional behavior onto a single object, among all the instances of the class you have a &quot;decorated&quot; instance.</p>
 <h2>How do we use that in Ruby on Rails?</h2>
 <p>A common requirement in projects is to alter data in a model for the view layer. For example, say you have a <code>User</code> model with attributes <code>first_name</code> and <code>last_name</code> and you want to display the full name of the user in the view.</p>
@@ -128,8 +134,8 @@ end
 <li>Decorator in Ruby <a href="https://refactoring.guru/design-patterns/decorator/ruby/example">RefactoringGuru</a></li>
 </ul>
 
-    </header>
-
+</div>
+      </div>
   
   </main>
 

@@ -1,5 +1,5 @@
 ---
-layout: layout.njk
+layout: journal.njk
 title: "How to create a multi-step form in Ruby on Rails"
 author: Janessa
 date: 2020-10-08

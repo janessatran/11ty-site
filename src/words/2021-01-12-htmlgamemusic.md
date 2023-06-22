@@ -1,5 +1,5 @@
 ---
-layout: layout.njk
+layout: journal.njk
 title: Adding Music to the Game
 author: Janessa
 date: 2021-01-12

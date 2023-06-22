@@ -1,5 +1,5 @@
 ---
-layout: layout.njk
+layout: journal.njk
 title: Life Updates
 author: Janessa
 date: 2019-10-12

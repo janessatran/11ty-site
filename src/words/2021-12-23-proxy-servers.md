@@ -2,7 +2,7 @@
 date: 2021-12-23
 title: "Proxy Servers"
 tags: blog
-layout: layout.njk
+layout: journal.njk
 ---
 
 During a project at work, my teammate and I were having issues trying to connect to an API that was behind a VPN. The question of whether or not our the request was going through a proxy server came up. I hadn't heard of a proxy server before so I thought I would write about what it is.

@@ -1,5 +1,5 @@
 ---
-layout: layout.njk
+layout: journal.njk
 title: Post-surgery life reflections
 author: Janessa
 date: 2019-07-28

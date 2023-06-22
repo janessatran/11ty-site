@@ -1,5 +1,5 @@
 ---
-layout: layout.njk
+layout: journal.njk
 title: Things I like at the moment
 author: Janessa
 date: 2022-06-18

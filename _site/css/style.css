@@ -56,7 +56,7 @@
   --text-leading-crushed: 1.1;
   --text-measure: 50ch;
   --border-width-default: 1px;
-  --border-default: var(--border-width-default) solid var(--color-fg);
+  --border-default: var(--border-width-default) dotted var(--color-fg);
 
   --gutter: 1.25rem;
 }
@@ -184,6 +184,7 @@ a {
   -webkit-background-clip: text;
   background-clip: text;
   transition: 0.4s;
+  text-decoration: underline;
 }
 
 .color-slide:hover {
@@ -363,40 +364,6 @@ body > div > div > div > div > div.Header {
   }
 }
 
-/* Journal */
-.journal {
-  list-style: none;
-}
-
-.journal a {
-  border-bottom: var(--border-default);
-  color: var(--color-fg);
-  padding: 0 0.1em;
-  text-decoration: none;
-  font-family: monospace;
-  font-size: 0.8rem;
-  margin-block-start: 1rem;
-}
-
-.horizontal {
-  display: flex;
-}
-
-hr {
-  border: 0;
-  border-bottom: var(--border-default);
-}
-
-.grow {
-  flex-grow: 1;
-}
-
-.journal-entry-date {
-  font-size: 0.8rem;
-  border-bottom: var(--border-default);
-  margin-block-start: 1rem;
-}
-
 /* quotes */
 blockquote {
   margin: 0;
@@ -453,4 +420,70 @@ blockquote footer:before {
     width: 100%;
     min-width: 100%;
   }
+}
+
+.content {
+  margin: 0 6rem;
+}
+
+@media all and (max-width: 600px) {
+  .content {
+    margin: 0 1rem;
+  }
+}
+
+/* Journal */
+.archive {
+  list-style: none;
+  margin-left: -40px;
+}
+
+.archive a {
+  border-bottom: var(--border-default);
+  color: var(--color-fg);
+  padding: 0 0.1em;
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 0.8rem;
+  margin-block-start: 1rem;
+}
+
+.horizontal {
+  display: flex;
+}
+
+hr {
+  border: 0;
+  border-bottom: var(--border-default);
+}
+
+.grow {
+  flex-grow: 1;
+}
+
+.journal-entry-date {
+  font-size: 0.8rem;
+  border-bottom: var(--border-default);
+  margin-block-start: 1rem;
+  color: var(--orange);
+}
+
+.journal-content > p {
+  margin: 0;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.journal-content > h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+
+.journal-content > p > strong {
+  font-weight: 700;
 }

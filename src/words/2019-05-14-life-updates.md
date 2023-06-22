@@ -1,5 +1,5 @@
 ---
-layout: layout.njk
+layout: journal.njk
 title: It's been a minute... hi! 💖
 author: Janessa
 date: 2019-05-14
