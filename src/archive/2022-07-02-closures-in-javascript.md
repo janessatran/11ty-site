@@ -41,7 +41,7 @@ If we call the outer function, it will just call the inner function.
 
 Enter this into the console and you will see, `makeCounter()`:
 
-```
+```javascript
 makeCounter()
 ƒ () {
   return count++;

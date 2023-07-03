@@ -43,7 +43,7 @@ Cool beans. But why does any of that matter? This matters because we can use oct
 
 On unix OS, each file has a set of flags associated with them to show who can access the file and how. You can see these flags by typing `ls -la` in your terminal. The output looks something like:
 
-```
+```bash
 drwxr-xr-x   28 janessatran  staff     952 Oct 26 17:24 .
 drwxr-xr-x    3 janessatran  staff     102 Oct 26 16:57 ..
 -rw-r--r--    1 janessatran  staff       9 Oct 26 16:58 .browserslistrc

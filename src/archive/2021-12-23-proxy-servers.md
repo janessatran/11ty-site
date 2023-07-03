@@ -26,7 +26,7 @@ It offers a few benefits including:
 
 There's not a 100% reliable way to tell, but the presence of any of the following headers is a strong indication that the request was routed from a proxy server:
 
-```
+```bash
 via:
 forwarded:
 x-forwarded-for:

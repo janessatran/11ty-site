@@ -6,6 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet">
+
   <!-- Grab title from the page data and dump it here -->
   <title>Learning Log (04) - Rails AntiPatterns, Using modules and classes</title>
 </head>
@@ -34,10 +36,12 @@
 
       <nav class="gap-xl">
         <ul class="nav">
-          <li><a href="/inspiration" class="color-slide">inspiration</a></li>
-          <li><a href="/words" class="color-slide">archive</a></li>
+          
+          <li><a href="https://dev.to/janessatran" class="color-slide">dev.to</a></li>
           <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
           <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
+          <li><a href="/words" class="color-slide">archive</a></li>
+
         </u>
       </nav>
 
@@ -45,7 +49,8 @@
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
       <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
       <div class="content">
-      <div class="journal-content">
+      
+<div class="journal-content">
   <p>Good morning my fellow readers! I'm continuing to go through Rails AntiPatterns and have more things I'd like to share as I'm learning. This post will be about how to simplify Models using modules and classes.</p>
 <h3>TL;DR</h3>
 <p>If you don't want to read the entire thing, this is what I've learned in a nutshell...
@@ -227,9 +232,10 @@ end
 <p>Active Record supplies built-in transactions such as <strong>validations</strong>, which allow you to ensure that only valid data is stored in your database, and <strong>callbacks</strong>, which allows you to trigger logic before or after an alteration of an object's state. Employ these instead of create a block of transactions to run to avoid complexity!</p>
 
 </div>
+
       </div>
   
   </main>
-
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
 </body>
 </html>

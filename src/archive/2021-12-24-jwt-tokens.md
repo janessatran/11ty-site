@@ -25,7 +25,7 @@ In its compact form, JSON Web Tokens consist of the Header, Payload, and Signatu
 
 **Header**: The header usually consists of two parts, the type of the token (JWT) and the signing algorithm being used (HMAC, SHA256, RSA). For example:
 
-```
+```json
 {
   "alg": "HS256",
   "type": "JWT"
@@ -68,6 +68,6 @@ HMACSHA256(base64UrlEncode(header) + "." + base64UrlEncode(payload), secret)
 
 When you put the header, payload, and signature all together you get something like:
 
-```
+```json
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkiLCJuYW1lIjoiSmFuZXNzYSIsImFkbWluIjp0cnVlfQ.dCKmOwHDkyXGtHQfExjUoepCKQpKy9czARV-EJIJx_E
 ```

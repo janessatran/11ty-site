@@ -6,6 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet">
+
   <!-- Grab title from the page data and dump it here -->
   <title>Learning Log (03) - Rails AntiPatterns, Model layer code</title>
 </head>
@@ -34,10 +36,12 @@
 
       <nav class="gap-xl">
         <ul class="nav">
-          <li><a href="/inspiration" class="color-slide">inspiration</a></li>
-          <li><a href="/words" class="color-slide">archive</a></li>
+          
+          <li><a href="https://dev.to/janessatran" class="color-slide">dev.to</a></li>
           <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
           <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
+          <li><a href="/words" class="color-slide">archive</a></li>
+
         </u>
       </nav>
 
@@ -45,7 +49,8 @@
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
       <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
       <div class="content">
-      <div class="journal-content">
+      
+<div class="journal-content">
   <p>Today I started reading a book called &quot;Rails AntiPatterns, Best Practice Ruby on Rails Refactoring&quot;. My goal with reading this book is to get a better sense of how to write more organized, clean code that makes sense to other people and is easier to maintain. In this post, I will share what I learned today from the book!</p>
 <h2>Follow the Law of Demeter, aka, &quot;use only one dot&quot;.</h2>
 <p>This law describes the concept that an object can call methods on a related object, but it should not reach through that object to call a method on a third related object.</p>
@@ -178,9 +183,10 @@ end
 <p>This finder object pattern helps keep the model logic strictly related to a class' behavior, unlike before when we had a query for <code>Order</code> in our <code>User</code> controller. It also helps keep the controller's skinny.</p>
 
 </div>
+
       </div>
   
   </main>
-
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
 </body>
 </html>

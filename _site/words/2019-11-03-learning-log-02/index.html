@@ -6,6 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet">
+
   <!-- Grab title from the page data and dump it here -->
   <title>Learning Log (02) - `chmod` and binary</title>
 </head>
@@ -34,10 +36,12 @@
 
       <nav class="gap-xl">
         <ul class="nav">
-          <li><a href="/inspiration" class="color-slide">inspiration</a></li>
-          <li><a href="/words" class="color-slide">archive</a></li>
+          
+          <li><a href="https://dev.to/janessatran" class="color-slide">dev.to</a></li>
           <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
           <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
+          <li><a href="/words" class="color-slide">archive</a></li>
+
         </u>
       </nav>
 
@@ -45,7 +49,8 @@
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
       <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
       <div class="content">
-      <div class="journal-content">
+      
+<div class="journal-content">
   <p>Hello again, friend! I'm learning a lot of new things in my new role and it's great!! One of the things that stands out from last week that I learned was about permission settings on files and the unix command <code>chmod</code>, as well as how binary works in general. This post will be a summary of those key things.</p>
 <h3>What is binary?</h3>
 <p>A binary number is a number expressed in the base-2 numeral system (aka binary numeral system), which uses only two symbols: zero and one. BUilding binary numbers looks like:</p>
@@ -126,7 +131,7 @@
 <p>Cool beans. But why does any of that matter? This matters because we can use octal notation to change/set permissions for files using <code>chmod</code> (we can also use symbols). Octal numbers are derived from converting the binary numbers to base-8, using the digits 0 to 7. I'll get into the permission settings next!</p>
 <h3>Unix <code>chmod</code> command and file permissions</h3>
 <p>On unix OS, each file has a set of flags associated with them to show who can access the file and how. You can see these flags by typing <code>ls -la</code> in your terminal. The output looks something like:</p>
-<pre><code>drwxr-xr-x   28 janessatran  staff     952 Oct 26 17:24 .
+<pre><code class="language-bash">drwxr-xr-x   28 janessatran  staff     952 Oct 26 17:24 .
 drwxr-xr-x    3 janessatran  staff     102 Oct 26 16:57 ..
 -rw-r--r--    1 janessatran  staff       9 Oct 26 16:58 .browserslistrc
 -rw-r--r--    1 janessatran  staff     126 Oct 31 19:38 .env
@@ -213,9 +218,10 @@ drwxr-xr-x    3 janessatran  staff     102 Oct 26 16:57 vendor
 <p>So, if I wanted to give each group read, write, execute access to my file, I'd use the command <code>chmod 777 filename</code>. NEAT!!!</p>
 
 </div>
+
       </div>
   
   </main>
-
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
 </body>
 </html>

@@ -6,6 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet">
+
   <!-- Grab title from the page data and dump it here -->
   <title>Animating the Hero&#39;s Death</title>
 </head>
@@ -34,10 +36,12 @@
 
       <nav class="gap-xl">
         <ul class="nav">
-          <li><a href="/inspiration" class="color-slide">inspiration</a></li>
-          <li><a href="/words" class="color-slide">archive</a></li>
+          
+          <li><a href="https://dev.to/janessatran" class="color-slide">dev.to</a></li>
           <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
           <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
+          <li><a href="/words" class="color-slide">archive</a></li>
+
         </u>
       </nav>
 
@@ -45,7 +49,8 @@
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
       <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
       <div class="content">
-      <div class="journal-content">
+      
+<div class="journal-content">
   <p><em>This is the fifth post in my series on learning html game development. You can find the other posts <a href="https://www.janessatran.com/tags/#game-dev">here</a>!</em></p>
 <p>This next section is going to cover how to add an animation that plays when the hero, Leat, dies by running into a spider. Previous to this feature addition, running into a spider simply caused the level to reload. It's clear from the level-reload that something went wrong, but adding in an animation <em>before</em> that happens also clarifies that touching spiders is bad (at least in this game... and personally I would argue in real life but maybe I just really don't like spiders). If you're interested in how to add this feature to your game, just keep reading!</p>
 <h2>Adding an animation to the Hero Sprite</h2>
@@ -160,9 +165,10 @@ It is called immediately after <code>preUpdate</code> and before <code>postUpdat
 </ul>
 
 </div>
+
       </div>
   
   </main>
-
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
 </body>
 </html>

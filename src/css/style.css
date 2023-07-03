@@ -6,6 +6,11 @@
 }
 
 @font-face {
+  font-family: "Poppins Bold";
+  src: url("../fonts/poppins/PoppinsLatin-Bold.ttf");
+}
+
+@font-face {
   font-family: "Junicode";
   src: url("../fonts/junicode/JunicodeTwoBeta-Regular.ttf");
 }
@@ -83,7 +88,6 @@ body {
 body {
   -webkit-font-smoothing: antialiased;
   background-color: var(--color-light-purple);
-  font-family: "Junicode", serif;
   color: var(--color-fg);
   font-family: var(--text-body);
   font-feature-settings: "case" on;
@@ -94,7 +98,7 @@ body {
 }
 
 html {
-  font-size: max(1.2rem, min(0.8rem + 0.48vw, 1.41rem));
+  font-size: max(1rem, min(0.8rem + 0.48vw, 1.41rem));
 }
 
 body {
@@ -145,7 +149,6 @@ h1 {
 }
 
 p {
-  font-family: "Junicode";
   color: var(--dark-green);
 }
 
@@ -198,6 +201,13 @@ a {
   text-align: center;
 }
 
+@media (max-width: 800px) {
+  .center-large-text {
+    margin: 2rem auto;
+    width: 80%;
+  }
+}
+
 .author {
   margin-top: 6.3rem;
   margin-bottom: 3rem;
@@ -236,8 +246,11 @@ a {
 }
 
 @media (max-width: 800px) {
+  .author {
+    margin: 2rem auto;
+  }
   .author .author-name {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 }
 
@@ -423,7 +436,7 @@ blockquote footer:before {
 }
 
 .content {
-  margin: 0 6rem;
+  padding-bottom: 6rem;
 }
 
 @media all and (max-width: 600px) {
@@ -444,7 +457,7 @@ blockquote footer:before {
   padding: 0 0.1em;
   text-decoration: none;
   font-family: monospace;
-  font-size: 0.8rem;
+  font-size: 1rem;
   margin-block-start: 1rem;
 }
 
@@ -468,6 +481,17 @@ hr {
   color: var(--orange);
 }
 
+.journal-content {
+  margin: 0 6rem;
+  font-family: "Open sans", sans-serif;
+}
+
+@media all and (max-width: 600px) {
+  .journal-content {
+    margin: 0;
+  }
+}
+
 .journal-content > p {
   margin: 0;
   padding-top: 15px;
@@ -482,8 +506,26 @@ h5,
 h6 {
   margin-top: 30px;
   margin-bottom: 0;
+  color: var(--bright-green);
+  font-family: "Poppins Bold";
 }
 
 .journal-content > p > strong {
   font-weight: 700;
+}
+
+blockquote {
+  color: #a5aab0;
+  font-style: italic;
+  text-align: center;
+  opacity: 0.9;
+  padding: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 1em;
+}
+
+blockquote > :last-child {
+  margin-bottom: 0;
+  margin-top: 0;
 }

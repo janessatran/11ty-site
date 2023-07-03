@@ -10,6 +10,11 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPlugin(embeds);
 
+  // Returns a collection of blog posts in reverse date order
+  eleventyConfig.addCollection("archive", (collection) => {
+    return [...collection.getFilteredByGlob("./src/archive/*.md")].reverse();
+  });
+
   return {
     // When a passthrough file is modified, rebuild the pages:
     passthroughFileCopy: true,

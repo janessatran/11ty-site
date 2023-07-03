@@ -6,6 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet">
+
   <!-- Grab title from the page data and dump it here -->
   <title>Understanding Closures</title>
 </head>
@@ -34,10 +36,12 @@
 
       <nav class="gap-xl">
         <ul class="nav">
-          <li><a href="/inspiration" class="color-slide">inspiration</a></li>
-          <li><a href="/words" class="color-slide">archive</a></li>
+          
+          <li><a href="https://dev.to/janessatran" class="color-slide">dev.to</a></li>
           <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
           <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
+          <li><a href="/words" class="color-slide">archive</a></li>
+
         </u>
       </nav>
 
@@ -45,7 +49,8 @@
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
       <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
       <div class="content">
-      <div class="journal-content">
+      
+<div class="journal-content">
   <p>If you were to ask me last week about closures in JavaScript...</p>
 <img src="https://miro.medium.com/max/1200/1*UDzgsQXxvWyJ0NQ8xp27ZA.jpeg" />
 <p>Let's change that!</p>
@@ -66,7 +71,7 @@
 </code></pre>
 <p>If we call the outer function, it will just call the inner function.</p>
 <p>Enter this into the console and you will see, <code>makeCounter()</code>:</p>
-<pre><code>makeCounter()
+<pre><code class="language-javascript">makeCounter()
 ƒ () {
   return count++;
 }
@@ -115,9 +120,10 @@ a.validateRequest(&quot;authKey&quot;); // Authorizing access
 </center>
 
 </div>
+
       </div>
   
   </main>
-
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
 </body>
 </html>
