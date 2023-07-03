@@ -3,7 +3,7 @@ layout: journal.njk
 title: Sprucing up the Win Screen
 author: Janessa
 date: 2021-01-11
-tags: blog
+tags: ["blog", "game-dev"]
 category: Tech
 ---
 

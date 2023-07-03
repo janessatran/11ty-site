@@ -3,7 +3,6 @@ layout: journal.njk
 title: It's been a minute... hi! 💖
 author: Janessa
 date: 2019-05-14
-tags: blog
 category: Tech
 intro: "hope you've been well, friend!"
 ---

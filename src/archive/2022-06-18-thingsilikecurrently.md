@@ -3,7 +3,6 @@ layout: journal.njk
 title: Things I like at the moment
 author: Janessa
 date: 2022-06-18
-tags: blog
 category: personal
 ---
 

@@ -3,7 +3,7 @@ layout: journal.njk
 title: Learning Log (04) - Rails AntiPatterns, Using modules and classes
 author: Janessa
 date: 2019-11-17
-tags: blog
+tags: ["learning-log"]
 category: Tech
 ---
 

@@ -3,7 +3,7 @@ layout: journal.njk
 title: Learning Log (03) - Rails AntiPatterns, Model layer code
 author: Janessa
 date: 2019-11-10
-tags: blog
+tags: ["learning-log"]
 category: Tech
 ---
 

@@ -3,11 +3,11 @@ layout: journal.njk
 title: Adding a door animation and camera fade
 author: Janessa
 date: 2021-01-16
-tags: blog
+tags: ["blog", "game-dev"]
 category: Tech
 ---
 
-_This is the sixth post in my series on learning html game development. You can find the other posts [here](https://www.janessatran.com/tags/#game-dev)!_
+_This is the sixth post in my series on learning html game development. You can find the other posts [here](./#related-posts)!_
 
 This post brings us to an end of my series on adding features to Adventures of Leat. The final features I will discuss include an animation effect I added to when Leat enters a door with a key, as well as a camera fade that occurs when transitioning to the win screen. As always, if you're interested in learning how I implemented these features, just keep reading!
 

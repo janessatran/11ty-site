@@ -3,7 +3,7 @@ layout: journal.njk
 title: Learning Log
 author: Janessa
 date: 2022-07-17
-tags: blog
+tags: ["learning-log"]
 ---
 
 ## Day 1: July 17, 2022

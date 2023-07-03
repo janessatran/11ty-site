@@ -3,7 +3,6 @@ layout: journal.njk
 title: Year of Joy (Happy New Year!)
 author: Janessa
 date: 2021-01-02
-tags: blog
 category: Life
 ---
 

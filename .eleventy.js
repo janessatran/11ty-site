@@ -15,6 +15,18 @@ module.exports = function (eleventyConfig) {
     return [...collection.getFilteredByGlob("./src/archive/*.md")].reverse();
   });
 
+  eleventyConfig.addFilter(
+    "filterByTags",
+    function (collection = [], ...requiredTags) {
+      return collection.filter((post) => {
+        console.log("JT DEBUG: post tags", post.data.tags);
+        return requiredTags.flat().every((tag) => {
+          if (post.data.tags) return post.data.tags.includes(tag);
+        });
+      });
+    }
+  );
+
   return {
     // When a passthrough file is modified, rebuild the pages:
     passthroughFileCopy: true,

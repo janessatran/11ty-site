@@ -1,7 +1,6 @@
 ---
 date: 2021-12-22
 title: "System Design: SQL vs NoSQL"
-tags: blog
 layout: journal.njk
 ---
 

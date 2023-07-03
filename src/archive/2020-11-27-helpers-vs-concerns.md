@@ -3,7 +3,7 @@ layout: journal.njk
 title: Helpers vs. Concerns in Rails
 author: Janessa
 date: 2020-11-27
-tags: blog
+tags: ["rails"]
 ---
 
 # What is a helper?

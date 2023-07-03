@@ -3,7 +3,7 @@ layout: journal.njk
 title: Understanding Closures
 author: Janessa
 date: 2022-07-02
-tags: blog
+tags: ["javascript"]
 ---
 
 If you were to ask me last week about closures in JavaScript...

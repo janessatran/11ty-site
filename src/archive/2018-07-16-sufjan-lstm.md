@@ -3,7 +3,7 @@ layout: journal.njk
 title: Sufjan Stevens Lyrics Generator using a LSTM model
 author: Janessa
 date: 2018-07-16
-tags: blog
+tags: ["data-analytics"]
 category: Data
 intro: "Data Science + Sufjan Stevens = ?"
 img: https://res.cloudinary.com/culturemap-com/image/upload/ar_7:4,c_fill,g_faces:center,w_1200/v1525982417/photos/15664_original.jpg

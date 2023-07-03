@@ -3,7 +3,7 @@ layout: journal.njk
 title: Decorator Pattern in Ruby on Rails
 author: Janessa
 date: 2020-11-06
-tags: blog
+tags: ["rails"]
 ---
 
 ## What is the Decorator Pattern?

@@ -3,7 +3,7 @@ layout: journal.njk
 title: Learning Log (02) - `chmod` and binary
 author: Janessa
 date: 2019-11-03
-tags: blog
+tags: ["learning-log"]
 category: Tech
 ---
 

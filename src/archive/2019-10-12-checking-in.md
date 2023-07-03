@@ -3,7 +3,6 @@ layout: journal.njk
 title: Life Updates
 author: Janessa
 date: 2019-10-12
-tags: blog
 category: Reflections
 ---
 

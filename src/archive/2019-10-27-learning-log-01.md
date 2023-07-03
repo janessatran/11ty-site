@@ -3,7 +3,7 @@ layout: journal.njk
 title: Learning Log (01)
 author: Janessa
 date: 2019-10-27
-tags: blog
+tags: ["learning-log"]
 category: Tech
 ---
 

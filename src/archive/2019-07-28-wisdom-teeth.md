@@ -3,7 +3,6 @@ layout: journal.njk
 title: Post-surgery life reflections
 author: Janessa
 date: 2019-07-28
-tags: blog
 category: Reflections
 img: https://66.media.tumblr.com/74d24f8b1c5804d12a623e9e479a6498/9874b97f13e99c5f-1c/s500x750/b0e2b38874684d929d98c6299bc16895b0d6f120.jpg
 ---

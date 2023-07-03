@@ -4,4 +4,19 @@ layout: layout.njk
 
 <div class="journal-content">
   {{ content | safe }}
+
+
+{%- set relatedPosts = collections.archive | filterByTags(tags) -%}
+{% if relatedPosts.length %}
+<aside>
+  <h3 data-tags="{{ tags | join(',') }}" id="related-posts">Check out these related posts!</h3>
+  <ul>
+    {%- for post in relatedPosts -%}
+      {% if post.data.tags %}
+      <li><a href="{{ post.url }}" data-tags="{{ post.data.tags | join(',') }}">{{ post.data.title }}</a></li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+</aside>
+{% endif %}
 </div>

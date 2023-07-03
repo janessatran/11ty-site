@@ -3,11 +3,11 @@ layout: journal.njk
 title: Adding the Ability to High Jump
 author: Janessa
 date: 2021-01-14
-tags: blog
+tags: ["blog", "game-dev"]
 category: Tech
 ---
 
-_Psst! This is the fourth post in my series on learning html game development. You can find the other posts [here](https://www.janessatran.com/tags/#game-dev)!_
+_Psst! This is the fourth post in my series on learning html game development. You can find the other posts [here](./#related-posts)!_
 
 This next section is going to cover how I added the ability to "high jump" (or fly, because you can technically continue to stay in the air 😂) into the game. This was probably one of the trickier features for me to figure out how to implement, partially due to my lack of experience with playing games and not knowing what a "high jump" even is. Nevertheless... let's get into how to add this feature!
 

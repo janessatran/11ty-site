@@ -3,11 +3,11 @@ layout: journal.njk
 title: Adding Music to the Game
 author: Janessa
 date: 2021-01-12
-tags: blog
+tags: ["blog", "game-dev"]
 category: Tech
 ---
 
-_This is the third post in my series on learning html game development. You can find the other posts [here](/tags/#Game%20Dev)!_
+_This is the third post in my series on learning html game development. You can find the other posts [here](./#related-posts)!_
 
 While I don't play a lot of video games, video game music is honestly one of my favorite genres of music. I find it really great to work to (because it's upbeat/not distracting) and I also think sometimes it can really complete a game. To no surprise, I was pretty excited about this next feature which involves adding background music to the different game states (these starts are menu, play, and win)! If you'd like to learn how I did it, continue reading!
 

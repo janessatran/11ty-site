@@ -3,8 +3,6 @@ layout: journal.njk
 title: Still (March)ing Along...
 author: Janessa
 date: 2019-03-09
-tags: blog
-category: Tech
 intro: "Checking in on #100DaysOfCode"
 ---
 

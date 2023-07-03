@@ -1,7 +1,6 @@
 ---
 date: 2021-12-23
 title: "Proxy Servers"
-tags: blog
 layout: journal.njk
 ---
 

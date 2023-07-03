@@ -3,11 +3,11 @@ layout: journal.njk
 title: Animating the Hero's Death
 author: Janessa
 date: 2021-01-15
-tags: blog
+tags: ["blog", "game-dev"]
 category: Tech
 ---
 
-_This is the fifth post in my series on learning html game development. You can find the other posts [here](https://www.janessatran.com/tags/#game-dev)!_
+_This is the fifth post in my series on learning html game development. You can find the other posts [here](./#related-posts)!_
 
 This next section is going to cover how to add an animation that plays when the hero, Leat, dies by running into a spider. Previous to this feature addition, running into a spider simply caused the level to reload. It's clear from the level-reload that something went wrong, but adding in an animation _before_ that happens also clarifies that touching spiders is bad (at least in this game... and personally I would argue in real life but maybe I just really don't like spiders). If you're interested in how to add this feature to your game, just keep reading!
 

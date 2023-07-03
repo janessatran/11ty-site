@@ -3,7 +3,7 @@ layout: journal.njk
 title: New Year, New (The)me
 author: Janessa
 date: 2020-01-19
-tags: blog
+tags: ["accessibility"]
 category: Tech
 img: https://i.imgur.com/sVkCT33.jpg
 ---

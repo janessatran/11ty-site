@@ -529,3 +529,16 @@ blockquote > :last-child {
   margin-bottom: 0;
   margin-top: 0;
 }
+
+aside {
+  border: 1px solid #888888;
+  padding: 1rem;
+  background-color: white;
+  margin-block-start: 4rem;
+  box-shadow: 10px 10px black;
+}
+
+aside > h3 {
+  margin: 0 0 1rem 0;
+  color: black;
+}
