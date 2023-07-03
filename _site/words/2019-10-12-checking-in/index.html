@@ -1,63 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="/css/style.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Grab title from the page data and dump it here -->
-    <title>Life Updates</title>
-  </head>
-  <body>
-    <main>
+<head>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/code.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet">
 
-      <header class="gap-m">
-        <div class="title-and-nav">
-          <a href="/" class="author">
-            <div id="author-name-wrapper">
-              <h2 class="author-name" id="author-name-text">
-                
-                <div class="author-name-char">J</div>
-                <div class="author-name-char">a</div>
-                <div class="author-name-char">n</div>
-                <div class="author-name-char">e</div>
-                <div class="author-name-char">s</div>
-                <div class="author-name-char">s</div>
-                <div class="author-name-char">a</div>
-                <div class="author-name-char"></div>
-                <div class="author-name-char">T</div>
-                <div class="author-name-char">r</div>
-                <div class="author-name-char">a</div>
-                <div class="author-name-char">n</div>
-                <div class="author-name-char | smiley">☺&#xFE0E;</div>
-              </h2>
-            </div>
-          </a>
-
-          <nav class="gap-xl" id="nav-wrapper">
-            <ul class="nav">
-              <li>
-                <a href="/#" class="color-slide">about</a>
-              </li>
-              <li>
-                <a href="/words" class="color-slide">thoughts</a>
-              </li>
-              <li>
-                <a href="/inspiration" class="color-slide">inspiration</a>
-              </li>
-              <li>
-                <p class="float-right">CREATIVE SOFTWARE DEVELOPER
-                </p>
-              </li>
-            </u>
-          </nav>
-        </header>
+  <!-- Grab title from the page data and dump it here -->
+  <title>Life Updates</title>
+</head>
+<body>
+  <main>
+    <header class="gap-m">
+      <a href="/" class="author">
+      <div class="author"> 
+        <h2 class="author-name"> 
+          <div class="author-name-char">J</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char">e</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char"> </div> 
+          <div class="author-name-char">T</div> 
+          <div class="author-name-char">r</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char | smiley">☺&#xFE0E;</div> 
+        </h2>
       </div>
+      </a>
 
-      <div class="content">
+      <nav class="gap-xl">
+        <ul class="nav">
+          
+          <li><a href="https://dev.to/janessatran" class="color-slide">dev.to</a></li>
+          <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
+          <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
+          <li><a href="/words" class="color-slide">archive</a></li>
+
+        </u>
+      </nav>
+
+    </header>
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
-        <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
-        <h2>Checking in again</h2>
+      <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
+      <div class="content">
+      
+<div class="journal-content">
+  <h2>Checking in again</h2>
 <p>Hi there! 👋 It's been about three months since I've posted on this blog, which is quite a bit of time... but not very unusual for me. I haven't prioritized recording the things I've been doing much in blog post form (although, I'm pretty good with <a href="https://twitter.com/janessatran_">tweeting</a> about what I'm learning). A lot has happened during the last time I posted! Exciting things! To name a few:</p>
 <ul>
 <li>I wrapped up my apprenticeship with RubyMe, contributing to the open source project <a href="https://github.com/ifmeorg/ifme">If me.</a></li>
@@ -70,41 +64,11 @@
 <p>On top of working full-time, I'm pretty content with what I've been able to accomplish. Outside of coding and learning, I'm also trying to just maintain a balance in my life. I hear that's a good thing (just kidding, I know first hand that it's a good thing, take care of yourselves folks!!!) To me, balance looks like spending quality time with friends and my partner, spending quality time with my cat, exercising a few times a week, and just giving myself the space to just reflect and refactor. So there's been a lot of all that going on in between all the other milestones I just listed.</p>
 <p>Anyway, I'm starting a new chapter soon and entering into the world of creating software professionally and I want to get in the habit of writing about what I'm learning/doing/confused about/etcetera, at least once a month. I think it'd be nice to look back on old posts and see how far I've progressed, and hey, maybe it might help someone else too!</p>
 
+</div>
+
       </div>
-
-    </main>
-
-    <script>
-      // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
-      window.onscroll = function () {
-        scrollFunction()
-      };
-
-      function scrollFunction() {
-        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-          document
-            .getElementById("author-name-wrapper")
-            .style
-            .margin = "10px";
-          document
-            .getElementById("author-name-text")
-            .style
-            .fontSize = "2rem";
-          document
-            .getElementById("nav-wrapper")
-            .style
-            .marginBottom = "0";
-        } else {
-          document
-            .getElementById("author-name-wrapper")
-            .style
-            .margin = "50px";
-          document
-            .getElementById("author-name-text")
-            .style
-            .fontSize = "4rem";
-        }
-      }
-    </script>
-  </body>
+  
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+</body>
 </html>

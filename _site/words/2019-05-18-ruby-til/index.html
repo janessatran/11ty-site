@@ -1,63 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="/css/style.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Grab title from the page data and dump it here -->
-    <title>some Ruby things I learned today 💭</title>
-  </head>
-  <body>
-    <main>
+<head>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/code.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet">
 
-      <header class="gap-m">
-        <div class="title-and-nav">
-          <a href="/" class="author">
-            <div id="author-name-wrapper">
-              <h2 class="author-name" id="author-name-text">
-                
-                <div class="author-name-char">J</div>
-                <div class="author-name-char">a</div>
-                <div class="author-name-char">n</div>
-                <div class="author-name-char">e</div>
-                <div class="author-name-char">s</div>
-                <div class="author-name-char">s</div>
-                <div class="author-name-char">a</div>
-                <div class="author-name-char"></div>
-                <div class="author-name-char">T</div>
-                <div class="author-name-char">r</div>
-                <div class="author-name-char">a</div>
-                <div class="author-name-char">n</div>
-                <div class="author-name-char | smiley">☺&#xFE0E;</div>
-              </h2>
-            </div>
-          </a>
-
-          <nav class="gap-xl" id="nav-wrapper">
-            <ul class="nav">
-              <li>
-                <a href="/#" class="color-slide">about</a>
-              </li>
-              <li>
-                <a href="/words" class="color-slide">thoughts</a>
-              </li>
-              <li>
-                <a href="/inspiration" class="color-slide">inspiration</a>
-              </li>
-              <li>
-                <p class="float-right">CREATIVE SOFTWARE DEVELOPER
-                </p>
-              </li>
-            </u>
-          </nav>
-        </header>
+  <!-- Grab title from the page data and dump it here -->
+  <title>some Ruby things I learned today 💭</title>
+</head>
+<body>
+  <main>
+    <header class="gap-m">
+      <a href="/" class="author">
+      <div class="author"> 
+        <h2 class="author-name"> 
+          <div class="author-name-char">J</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char">e</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char"> </div> 
+          <div class="author-name-char">T</div> 
+          <div class="author-name-char">r</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char | smiley">☺&#xFE0E;</div> 
+        </h2>
       </div>
+      </a>
 
-      <div class="content">
+      <nav class="gap-xl">
+        <ul class="nav">
+          
+          <li><a href="https://dev.to/janessatran" class="color-slide">dev.to</a></li>
+          <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
+          <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
+          <li><a href="/words" class="color-slide">archive</a></li>
+
+        </u>
+      </nav>
+
+    </header>
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
-        <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
-        <p>If you've been following my posts, I mentioned that following the <strong>#100DaysOfCode</strong> challenge I wanted to spend more time doing practice problems on codewars, leetcode, HackerRank, etc. This is because I want to spend more time developing my problem-solving skills and to become more familiar of the &quot;ruby-way&quot; of programming.</p>
+      <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
+      <div class="content">
+      
+<div class="journal-content">
+  <p>If you've been following my posts, I mentioned that following the <strong>#100DaysOfCode</strong> challenge I wanted to spend more time doing practice problems on codewars, leetcode, HackerRank, etc. This is because I want to spend more time developing my problem-solving skills and to become more familiar of the &quot;ruby-way&quot; of programming.</p>
 <p>Here are some things I learned about today that feel worth noting:</p>
 <h2>Inject / Reduce</h2>
 <p>These methods can be used to basically combine a bunch of things down to one thing (or at least that's how I've come to understand it so far). Usually, we can do this by iterating through the data structure and applying some sort of aggregation technique, but the <code>reduce</code> method lets us do it in one line!
@@ -136,41 +130,11 @@ cuppa.ice # false
 </code></pre>
 <p>Awesome, now we can see with the method invocation exactly what arguments the class is expecting!</p>
 
+</div>
+
       </div>
-
-    </main>
-
-    <script>
-      // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
-      window.onscroll = function () {
-        scrollFunction()
-      };
-
-      function scrollFunction() {
-        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-          document
-            .getElementById("author-name-wrapper")
-            .style
-            .margin = "10px";
-          document
-            .getElementById("author-name-text")
-            .style
-            .fontSize = "2rem";
-          document
-            .getElementById("nav-wrapper")
-            .style
-            .marginBottom = "0";
-        } else {
-          document
-            .getElementById("author-name-wrapper")
-            .style
-            .margin = "50px";
-          document
-            .getElementById("author-name-text")
-            .style
-            .fontSize = "4rem";
-        }
-      }
-    </script>
-  </body>
+  
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+</body>
 </html>

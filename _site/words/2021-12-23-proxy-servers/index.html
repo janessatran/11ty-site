@@ -1,63 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="/css/style.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Grab title from the page data and dump it here -->
-    <title>Proxy Servers</title>
-  </head>
-  <body>
-    <main>
+<head>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/code.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet">
 
-      <header class="gap-m">
-        <div class="title-and-nav">
-          <a href="/" class="author">
-            <div id="author-name-wrapper">
-              <h2 class="author-name" id="author-name-text">
-                
-                <div class="author-name-char">J</div>
-                <div class="author-name-char">a</div>
-                <div class="author-name-char">n</div>
-                <div class="author-name-char">e</div>
-                <div class="author-name-char">s</div>
-                <div class="author-name-char">s</div>
-                <div class="author-name-char">a</div>
-                <div class="author-name-char"></div>
-                <div class="author-name-char">T</div>
-                <div class="author-name-char">r</div>
-                <div class="author-name-char">a</div>
-                <div class="author-name-char">n</div>
-                <div class="author-name-char | smiley">☺&#xFE0E;</div>
-              </h2>
-            </div>
-          </a>
-
-          <nav class="gap-xl" id="nav-wrapper">
-            <ul class="nav">
-              <li>
-                <a href="/#" class="color-slide">about</a>
-              </li>
-              <li>
-                <a href="/words" class="color-slide">thoughts</a>
-              </li>
-              <li>
-                <a href="/inspiration" class="color-slide">inspiration</a>
-              </li>
-              <li>
-                <p class="float-right">CREATIVE SOFTWARE DEVELOPER
-                </p>
-              </li>
-            </u>
-          </nav>
-        </header>
+  <!-- Grab title from the page data and dump it here -->
+  <title>Proxy Servers</title>
+</head>
+<body>
+  <main>
+    <header class="gap-m">
+      <a href="/" class="author">
+      <div class="author"> 
+        <h2 class="author-name"> 
+          <div class="author-name-char">J</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char">e</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char"> </div> 
+          <div class="author-name-char">T</div> 
+          <div class="author-name-char">r</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char | smiley">☺&#xFE0E;</div> 
+        </h2>
       </div>
+      </a>
 
-      <div class="content">
+      <nav class="gap-xl">
+        <ul class="nav">
+          
+          <li><a href="https://dev.to/janessatran" class="color-slide">dev.to</a></li>
+          <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
+          <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
+          <li><a href="/words" class="color-slide">archive</a></li>
+
+        </u>
+      </nav>
+
+    </header>
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
-        <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
-        <p>During a project at work, my teammate and I were having issues trying to connect to an API that was behind a VPN. The question of whether or not our the request was going through a proxy server came up. I hadn't heard of a proxy server before so I thought I would write about what it is.</p>
+      <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
+      <div class="content">
+      
+<div class="journal-content">
+  <p>During a project at work, my teammate and I were having issues trying to connect to an API that was behind a VPN. The question of whether or not our the request was going through a proxy server came up. I hadn't heard of a proxy server before so I thought I would write about what it is.</p>
 <h2>What's a proxy server and how does it work?</h2>
 <p>A <strong>proxy server</strong> acts as a gateway between you and the internet.</p>
 <p>The way it works is, when you send a web request your request goes to the proxy server first. Then, the proxy server makes your web request on your behalf and collects the response from the web server. When the request is intercepted by the proxy, it may forward the request and it may modify it. Finally, the proxy server returns you the web page data.</p>
@@ -71,7 +65,7 @@
 </ul>
 <h2>How does one identify if a request is coming from a proxy server?</h2>
 <p>There's not a 100% reliable way to tell, but the presence of any of the following headers is a strong indication that the request was routed from a proxy server:</p>
-<pre><code>via:
+<pre><code class="language-bash">via:
 forwarded:
 x-forwarded-for:
 client-ip:
@@ -84,41 +78,11 @@ client-ip:
 <li><strong>Transparent proxies</strong>: These work without modifying the request and responses (which is why it's called transparent). You might have used a transparent proxy without realizing it. Employers, schools, libraries might set up a transparent proxy to filter user's content when they connect ot the internet or block users from accessing certain websites.</li>
 </ol>
 
+</div>
+
       </div>
-
-    </main>
-
-    <script>
-      // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
-      window.onscroll = function () {
-        scrollFunction()
-      };
-
-      function scrollFunction() {
-        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-          document
-            .getElementById("author-name-wrapper")
-            .style
-            .margin = "10px";
-          document
-            .getElementById("author-name-text")
-            .style
-            .fontSize = "2rem";
-          document
-            .getElementById("nav-wrapper")
-            .style
-            .marginBottom = "0";
-        } else {
-          document
-            .getElementById("author-name-wrapper")
-            .style
-            .margin = "50px";
-          document
-            .getElementById("author-name-text")
-            .style
-            .fontSize = "4rem";
-        }
-      }
-    </script>
-  </body>
+  
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+</body>
 </html>

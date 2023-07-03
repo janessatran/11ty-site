@@ -1,0 +1,13 @@
+---
+layout: journal.njk
+title: Words
+---
+
+<ul class="archive">
+  {% for post in collections.blog|sort(true, true, 'date') %}
+    <li class="horizontal"><a href="{{ post.url }}">{{ post.data.title }}</a>
+      <hr class="grow">
+      <p class="journal-entry-date">{{ post.data.date.toLocaleDateString('en-us', { year:"numeric", month:"numeric", day:"numeric"})  }}</p>
+    </li>
+  {% endfor %}
+</ul>

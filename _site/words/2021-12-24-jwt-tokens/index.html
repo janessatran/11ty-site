@@ -1,63 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="/css/style.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Grab title from the page data and dump it here -->
-    <title>JWT Tokens</title>
-  </head>
-  <body>
-    <main>
+<head>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/code.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet">
 
-      <header class="gap-m">
-        <div class="title-and-nav">
-          <a href="/" class="author">
-            <div id="author-name-wrapper">
-              <h2 class="author-name" id="author-name-text">
-                
-                <div class="author-name-char">J</div>
-                <div class="author-name-char">a</div>
-                <div class="author-name-char">n</div>
-                <div class="author-name-char">e</div>
-                <div class="author-name-char">s</div>
-                <div class="author-name-char">s</div>
-                <div class="author-name-char">a</div>
-                <div class="author-name-char"></div>
-                <div class="author-name-char">T</div>
-                <div class="author-name-char">r</div>
-                <div class="author-name-char">a</div>
-                <div class="author-name-char">n</div>
-                <div class="author-name-char | smiley">☺&#xFE0E;</div>
-              </h2>
-            </div>
-          </a>
-
-          <nav class="gap-xl" id="nav-wrapper">
-            <ul class="nav">
-              <li>
-                <a href="/#" class="color-slide">about</a>
-              </li>
-              <li>
-                <a href="/words" class="color-slide">thoughts</a>
-              </li>
-              <li>
-                <a href="/inspiration" class="color-slide">inspiration</a>
-              </li>
-              <li>
-                <p class="float-right">CREATIVE SOFTWARE DEVELOPER
-                </p>
-              </li>
-            </u>
-          </nav>
-        </header>
+  <!-- Grab title from the page data and dump it here -->
+  <title>JWT Tokens</title>
+</head>
+<body>
+  <main>
+    <header class="gap-m">
+      <a href="/" class="author">
+      <div class="author"> 
+        <h2 class="author-name"> 
+          <div class="author-name-char">J</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char">e</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char"> </div> 
+          <div class="author-name-char">T</div> 
+          <div class="author-name-char">r</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char | smiley">☺&#xFE0E;</div> 
+        </h2>
       </div>
+      </a>
 
-      <div class="content">
+      <nav class="gap-xl">
+        <ul class="nav">
+          
+          <li><a href="https://dev.to/janessatran" class="color-slide">dev.to</a></li>
+          <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
+          <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
+          <li><a href="/words" class="color-slide">archive</a></li>
+
+        </u>
+      </nav>
+
+    </header>
         <!-- Grab the content from the page data, dump it here, and mark it as safe -->
-        <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
-        <p>Recently at work we bootstrapped a new API and discussed what authentication methods we should use. JWT came up, and I didn't know about it, so here's what I learned.</p>
+      <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
+      <div class="content">
+      
+<div class="journal-content">
+  <p>Recently at work we bootstrapped a new API and discussed what authentication methods we should use. JWT came up, and I didn't know about it, so here's what I learned.</p>
 <h2>What is a JWT Access Token?</h2>
 <p>JSON Web Token (JWT) is an open standard defining a compact, self-contained way for securely transmitting JSON information. These tokens are digitally signed using either a secret or public/private key pair.</p>
 <h2>When should you use JWTs?</h2>
@@ -67,7 +61,7 @@
 <h2>What is the structure?</h2>
 <p>In its compact form, JSON Web Tokens consist of the Header, Payload, and Signature. The output consists of three Base64Url strings separated by dots that can be easily passed in HTML and HTTP environments. Something like <code>XXXX.YYYY.ZZZZ</code></p>
 <p><strong>Header</strong>: The header usually consists of two parts, the type of the token (JWT) and the signing algorithm being used (HMAC, SHA256, RSA). For example:</p>
-<pre><code>{
+<pre><code class="language-json">{
   &quot;alg&quot;: &quot;HS256&quot;,
   &quot;type&quot;: &quot;JWT&quot;
 }
@@ -96,44 +90,14 @@ The signature is used to verify the message wasn't changed along the way. In the
 <pre><code class="language-json">HMACSHA256(base64UrlEncode(header) + &quot;.&quot; + base64UrlEncode(payload), secret)
 </code></pre>
 <p>When you put the header, payload, and signature all together you get something like:</p>
-<pre><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkiLCJuYW1lIjoiSmFuZXNzYSIsImFkbWluIjp0cnVlfQ.dCKmOwHDkyXGtHQfExjUoepCKQpKy9czARV-EJIJx_E
+<pre><code class="language-json">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkiLCJuYW1lIjoiSmFuZXNzYSIsImFkbWluIjp0cnVlfQ.dCKmOwHDkyXGtHQfExjUoepCKQpKy9czARV-EJIJx_E
 </code></pre>
 
+</div>
+
       </div>
-
-    </main>
-
-    <script>
-      // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
-      window.onscroll = function () {
-        scrollFunction()
-      };
-
-      function scrollFunction() {
-        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-          document
-            .getElementById("author-name-wrapper")
-            .style
-            .margin = "10px";
-          document
-            .getElementById("author-name-text")
-            .style
-            .fontSize = "2rem";
-          document
-            .getElementById("nav-wrapper")
-            .style
-            .marginBottom = "0";
-        } else {
-          document
-            .getElementById("author-name-wrapper")
-            .style
-            .margin = "50px";
-          document
-            .getElementById("author-name-text")
-            .style
-            .fontSize = "4rem";
-        }
-      }
-    </script>
-  </body>
+  
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+</body>
 </html>
