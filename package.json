@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "assets:copy": "cp -R src/assets/* _site/",
-    "build": "npx eleventy && npm run assets:copy",
+    "build": "npx @11ty/eleventy",
     "dev": "npx @11ty/eleventy --serve --watch",
     "start": "npx @11ty/eleventy --serve",
     "test": "echo \"Error: no test specified\" && exit 1"
