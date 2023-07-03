@@ -281,7 +281,7 @@ In this function, I used a random number generator to get a random value between
 
 Running `generate_lyrics(model, 100)`:
 
-```
+```python
 in:  ['m']
 
 me from cutting my arm

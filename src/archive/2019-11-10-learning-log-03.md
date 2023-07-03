@@ -33,7 +33,7 @@ end
 
 If we were to show a view of the data above (a book of a specific genre, available at a specific library, which is at a specific address) it might look something like:
 
-```
+```ruby
 # library_books.html.erb
 
 <%= @book.genre %>

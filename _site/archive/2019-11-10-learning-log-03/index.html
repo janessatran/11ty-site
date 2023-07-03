@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-ruby.min.css" rel="stylesheet">
 
   <!-- Grab title from the page data and dump it here -->
   <title>Learning Log (03) - Rails AntiPatterns, Model layer code</title>
@@ -70,7 +71,7 @@ class Address &lt; ActiveRecord::Base
 end
 </code></pre>
 <p>If we were to show a view of the data above (a book of a specific genre, available at a specific library, which is at a specific address) it might look something like:</p>
-<pre><code># library_books.html.erb
+<pre><code class="language-ruby"># library_books.html.erb
 
 &lt;%= @book.genre %&gt;
 &lt;%= @book.library.name %&gt;
@@ -188,5 +189,6 @@ end
   
   </main>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-ruby.min.js"></script>
 </body>
 </html>
