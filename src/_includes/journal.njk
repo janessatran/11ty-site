@@ -7,7 +7,7 @@ layout: layout.njk
 
 
 {%- set relatedPosts = collections.archive | filterByTags(tags) -%}
-{% if relatedPosts.length %}
+{% if relatedPosts.length and relatedPosts.length > 1 %}
 <aside>
   <h3 data-tags="{{ tags | join(',') }}" id="related-posts">Check out these related posts!</h3>
   <ul>
