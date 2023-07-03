@@ -19,7 +19,6 @@ module.exports = function (eleventyConfig) {
     "filterByTags",
     function (collection = [], ...requiredTags) {
       return collection.filter((post) => {
-        console.log("JT DEBUG: post tags", post.data.tags);
         return requiredTags.flat().every((tag) => {
           if (post.data.tags) return post.data.tags.includes(tag);
         });
