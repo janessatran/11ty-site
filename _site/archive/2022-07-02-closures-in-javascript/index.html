@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/code.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet">
+
+  <!-- Grab title from the page data and dump it here -->
+  <title>Understanding Closures</title>
+</head>
+<body>
+  <main>
+    <header class="gap-m">
+      <a href="/" class="author">
+      <div class="author"> 
+        <h2 class="author-name"> 
+          <div class="author-name-char">J</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char">e</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char"> </div> 
+          <div class="author-name-char">T</div> 
+          <div class="author-name-char">r</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char | smiley">☺&#xFE0E;</div> 
+        </h2>
+      </div>
+      </a>
+
+      <nav class="gap-xl">
+        <ul class="nav">
+          
+          <li><a href="https://dev.to/janessatran" class="color-slide">dev.to</a></li>
+          <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
+          <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
+          <li><a href="/archive" class="color-slide">archive</a></li>
+
+        </u>
+      </nav>
+
+    </header>
+        <!-- Grab the content from the page data, dump it here, and mark it as safe -->
+      <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
+      <div class="content">
+      
+<div class="journal-content">
+  <p>If you were to ask me last week about closures in JavaScript...</p>
+<img src="https://miro.medium.com/max/1200/1*UDzgsQXxvWyJ0NQ8xp27ZA.jpeg" />
+<p>Let's change that!</p>
+<h2>What is a Closure?</h2>
+<p>A closure is a function that remembers its outer variables and can access them.</p>
+<p>How?</p>
+<p>Functions remember where they were created using a hidden <code>[[Environment]]</code> property (aka the lexical environment), and then their code can access outer variables.</p>
+<p>When a variable is updated, it's updated in the Lexical Environment where it lives. This is how we're able to update variables within a function from outside of it!</p>
+<p>Let's take a look at how this works with an example.</p>
+<h2>Example please!</h2>
+<p>Open up the inspector and run this in the console.</p>
+<pre><code class="language-javascript">function makeCounter() {
+  let count = 0;
+  return function () {
+    return count++;
+  };
+}
+</code></pre>
+<p>If we call the outer function, it will just call the inner function.</p>
+<p>Enter this into the console and you will see, <code>makeCounter()</code>:</p>
+<pre><code class="language-javascript">makeCounter()
+ƒ () {
+  return count++;
+}
+</code></pre>
+<p>Calling <code>makeCounter()</code> increments the <code>count</code> variable, but <code>count</code> isn't within the scope of the inner function. What happens then? When the code wants to access a variable, the inner lexical environment is searched first, then the outer one, then the more outer one, until it reaches the global one.</p>
+<p>The lexical environment of the outer function includes <code>count</code>, so the innter function will access <code>count</code> through there.</p>
+<pre><code class="language-javascript">let counter = makeCounter();
+counter(); // 0
+counter(); // 1
+counter(); // 2
+counter(); // 3
+</code></pre>
+<h3>How is this useful?</h3>
+<p>This is useful to encapsulate private information. For example, let's say we have an API that requires authorization.</p>
+<pre><code class="language-javascript">function authChecker() {
+  const authKey = &quot;authKey&quot;; // lets say this is encrypted
+  let authorize = () =&gt; {
+    console.log(&quot;Authorizing access&quot;);
+  };
+
+  let checkAuthKey = (key) =&gt; {
+    if (key === authKey) {
+      authorize();
+    } else {
+      console.log(&quot;Invalid authorization key&quot;);
+    }
+  };
+
+  let validateRequest = (key) =&gt; {
+    checkAuthKey(key);
+  };
+
+  return { validateRequest };
+}
+let a = authChecker();
+a.validateRequest(&quot;test&quot;); // Invalid authorization
+a.validateRequest(&quot;authKey&quot;); // Authorizing access
+</code></pre>
+<p>We want to be able to access the <code>authKey</code> when we call <code>validateRequest()</code>, but not have that variable public. This can be resolved by using closure functions!</p>
+<h3>Circling back</h3>
+<p>All in all, closures are inner functions with access to the variables/params of the outer function, even after the outer function is closed.</p>
+<p>Closure functions are able to access this data after the outer function is closed because of it’s lexical environment, which has references to it’s outer lexical environment.</p>
+<p>This is useful for several reasons including keeping sensitive information private.</p>
+<center>
+	<img src="https://i.imgur.com/KGgYGks.jpg" style="margin: 0 auto;" />
+</center>
+
+</div>
+
+      </div>
+  
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+</body>
+</html>

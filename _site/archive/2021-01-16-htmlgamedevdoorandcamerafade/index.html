@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/code.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet">
+
+  <!-- Grab title from the page data and dump it here -->
+  <title>Adding a door animation and camera fade</title>
+</head>
+<body>
+  <main>
+    <header class="gap-m">
+      <a href="/" class="author">
+      <div class="author"> 
+        <h2 class="author-name"> 
+          <div class="author-name-char">J</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char">e</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char"> </div> 
+          <div class="author-name-char">T</div> 
+          <div class="author-name-char">r</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char | smiley">☺&#xFE0E;</div> 
+        </h2>
+      </div>
+      </a>
+
+      <nav class="gap-xl">
+        <ul class="nav">
+          
+          <li><a href="https://dev.to/janessatran" class="color-slide">dev.to</a></li>
+          <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
+          <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
+          <li><a href="/archive" class="color-slide">archive</a></li>
+
+        </u>
+      </nav>
+
+    </header>
+        <!-- Grab the content from the page data, dump it here, and mark it as safe -->
+      <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
+      <div class="content">
+      
+<div class="journal-content">
+  <p><em>This is the sixth post in my series on learning html game development. You can find the other posts <a href="https://www.janessatran.com/tags/#game-dev">here</a>!</em></p>
+<p>This post brings us to an end of my series on adding features to Adventures of Leat. The final features I will discuss include an animation effect I added to when Leat enters a door with a key, as well as a camera fade that occurs when transitioning to the win screen. As always, if you're interested in learning how I implemented these features, just keep reading!</p>
+<h2>Subtle Animations to Improve Realism</h2>
+<p>Outside the land where Leat lives, when you open a door you have to actually go through the door before you enter into a new space. In the game, I emanate this illusion of realism by adding an animation which turns the door black while Leat walks through.</p>
+<p>The parts of the code that are relevant for implementing this functionality include the door sprite, which is loaded in the <code>PlayState</code> class as <code>this.door</code> , as well as the method which handles the event <code>PlayState._onHeroVsDoor</code>.</p>
+<p>First, we want to add an animation to our door sprite. In <code>PlayState.create</code> we add:</p>
+<pre><code class="language-js">this.door.animations.add(&quot;open&quot;, [1, 2], 8);
+</code></pre>
+<p>The arguments provided in this line of code do the following:</p>
+<ul>
+<li><code>open</code>: the unique name which we will use to reference the animation when we want to play it</li>
+<li><code>[1,2]</code>: the frames we will play from the sprite sheet (pictured below)</li>
+<li><code>8</code>: the rate in frames per second we will play the animation frames</li>
+</ul>
+<center><img src="https://i.imgur.com/MGkFN8t.png" alt="sprite sheet of door"></center>
+<p>Next, we will modify the event handler <code>PlayState._onHeroVsDoor</code> to play the animation and add a time event which allows the entire animation to play before loading the next level by adding a delay.</p>
+<pre><code class="language-js">PlayState._onHeroVsDoor = function (hero, door) {
+  this.door.animations.play(&quot;open&quot;);
+  this.game.time.events.add(100, this._nextLevel, this);
+};
+</code></pre>
+<p>That's it! Now, when Leat enters the door with a key, the open door animation will play and make it look like they are actually going through the door 😃</p>
+<center><img src="https://i.imgur.com/1Af2fQ2.gif" alt="door entering animation effect"></center>
+<h2>Savoring Victory</h2>
+<blockquote>
+<p>&quot;Savoring is the capacity to notice, appreciate and intensify the positive aspects of our lives.&quot;</p>
+</blockquote>
+<p>Before ending the game and displaying the win screen, I wanted to add a way to enable the player to intentionally savor the moment of completing the game. In order to create this, I added a camera effect which fades the screen black before it eventually fades back to normal on the Win Screen.</p>
+<p>To add this, we make use of <code>game.camera</code> which is automatically created when we initiatialize our <code>game</code> object. The camera is the view into our world. I'll include a description from the Phaser documentation itself, as I think the description is pretty good.</p>
+<center><img src="https://i.imgur.com/8qOG4aK.png" alt="screenshot of Phaser camera documentation"></center>
+<p><a href="https://phaser.io/docs/2.6.2/Phaser.Camera.html">https://phaser.io/docs/2.6.2/Phaser.Camera.html</a></p>
+<p>There are a few things we will need to add in order to implement the camera fade effect, so I will summarize them before jumping into the code. We will need:</p>
+<ul>
+<li>a new function <code>PlayState.fade</code> which will execute the camera fading</li>
+<li>a new function <code>PlayState.transitionToWinState</code> which will handle the change in state to the win state</li>
+<li>a modification to <code>PlayState.create</code> to handle the fade completion</li>
+<li>a modification to <code>PlayState._nextLevel</code> to call our fade function if the player has completed all the levels</li>
+</ul>
+<p>To create a fade effect, we use the <code>fade</code> function and specify the color and duration of the fade in milliseconds.</p>
+<pre><code class="language-js">PlayState.fade = function () {
+  this.game.camera.fade(0x000000, 2000);
+};
+</code></pre>
+<p>We also want to set up a handler for what happens after the fade completes, which in this instance is to transition to the Win State. Within <code>Phaser.Camera</code> is an event handler method called <code>onFadeComplete</code> which we will use. In <code>Phaser.create</code>, we set this up with this line of code:</p>
+<pre><code class="language-js">Phaser.create = function () {
+     ...
+     this.game.camera.onFadeComplete.add(this.transitionToWinState, this);
+     ...
+}
+</code></pre>
+<p>This means we also need to set up our event handler for transitioning to the Win State!</p>
+<pre><code class="language-js">PlayState.transitionToWinState = function () {
+  this.game.state.start(&quot;win&quot;, true, false, { coins: this.coinPickupCount });
+};
+</code></pre>
+<p>Lastly, we need to set up the call to fade the camera when the player is on the final level. This is handled in <code>PlayState._nextLevel</code>, so we will modify the conditional to call <code>this.fade()</code>.</p>
+<pre><code class="language-js">PlayState._nextLevel = function () {
+  if (this.hero.dying) {
+    this.game.state.restart(true, false, {
+      level: this.level,
+      bgMusicPlaying: this.bgMusicPlaying,
+    });
+  } else if (this.level + 1 == LEVEL_COUNT) {
+    // last level, make camera fade before transitioning!
+    this.fade();
+    this.music.pause();
+  } else {
+    this.game.state.restart(true, false, {
+      level: this.level + 1,
+      bgMusicPlaying: this.bgMusicPlaying,
+    });
+  }
+};
+</code></pre>
+<p>And it looks like...</p>
+<center><img src="https://i.imgur.com/G1QUHLw.gif" alt="camera fade effect turning screen black before showing win screen"></center>
+<h2>That's a wrap!</h2>
+<p>If you've been following me along on my HTML Game Dev learning experience, thanks a bunch! I hope you found some value in this posts and if you've played my game, I hope you had fun!!</p>
+<ul>
+<li><strong>Source code</strong>: <a href="https://github.com/janessatran/html5game/commit/78fcdc69c6aaa19d45f799575a2c6f1dc19f35a8">Add door animation</a>; <a href="https://github.com/janessatran/html5game/commit/98d7316d3d8c0fa63fb2d887c0f2e2ae46a134aa">Add camera fade effect</a></li>
+<li><strong>Link to game</strong>: <a href="https://janessatran.github.io/html5game/">Adventures of Leat</a></li>
+</ul>
+
+</div>
+
+      </div>
+  
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+</body>
+</html>

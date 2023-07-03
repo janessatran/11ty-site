@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet">
 
   <!-- Grab title from the page data and dump it here -->
-  <title>Now</title>
+  <title>Useful Rails Console Commands</title>
 </head>
 <body>
   <main>
@@ -50,13 +50,24 @@
       <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
       <div class="content">
       
-<p class="center-large-text | gap-xl">What I'm up to right now:</p>
-<ul>
-  <li>learning more about design and front-end development</li>
-  <li>moving my body- running, strength training, walk and talks, yoga</li>
-  <li>building things at Adobe</li>
-  <li>diving more deeply into mindfulness</li>
-</ul>
+<div class="journal-content">
+  <p>I work a lot with the rails console and learned a few cool things you can do inside the console that I wanted to record. If you're unfamiliar with the <strong>rails console</strong>, it's a command that lets you interact with your Rails application from the command line.</p>
+<h2>Useful Things You Can Do In Rails Console</h2>
+<p><strong>To clear the console:</strong> <code>CMD + R</code></p>
+<p><strong>To list available methods on an object:</strong> <code>ls</code></p>
+<p><strong>Reload console:</strong> <code>reload!</code></p>
+<p><strong>View method's source:</strong> <code>show-source object</code></p>
+<p><strong>Shortcut for value of last successful expression: <code>_</code></strong>
+This is useful when you run a command and then you decide you want to reference it. Instead of typing the entire command again or going back to assign it to some variable, you can just use <code>_</code>.</p>
+<p><strong>To view all commands available from the pry gem, in the console type</strong> <code>help</code></p>
+<p><strong>To access high level methods in the application</strong> such as path helpers or HTTP methods, you can call those methods on <code>app</code>:</p>
+<pre><code class="language-ruby">app.root_path
+app.get(app.root_path))
+</code></pre>
+<p>Similarly, you can call <code>helper</code> to get access to view helpers defined by you and also by rails (such as <code>link_to</code>)</p>
+
+</div>
+
       </div>
   
   </main>

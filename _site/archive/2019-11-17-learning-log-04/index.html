@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/code.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet">
+
+  <!-- Grab title from the page data and dump it here -->
+  <title>Learning Log (04) - Rails AntiPatterns, Using modules and classes</title>
+</head>
+<body>
+  <main>
+    <header class="gap-m">
+      <a href="/" class="author">
+      <div class="author"> 
+        <h2 class="author-name"> 
+          <div class="author-name-char">J</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char">e</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char"> </div> 
+          <div class="author-name-char">T</div> 
+          <div class="author-name-char">r</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char | smiley">☺&#xFE0E;</div> 
+        </h2>
+      </div>
+      </a>
+
+      <nav class="gap-xl">
+        <ul class="nav">
+          
+          <li><a href="https://dev.to/janessatran" class="color-slide">dev.to</a></li>
+          <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
+          <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
+          <li><a href="/archive" class="color-slide">archive</a></li>
+
+        </u>
+      </nav>
+
+    </header>
+        <!-- Grab the content from the page data, dump it here, and mark it as safe -->
+      <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
+      <div class="content">
+      
+<div class="journal-content">
+  <p>Good morning my fellow readers! I'm continuing to go through Rails AntiPatterns and have more things I'd like to share as I'm learning. This post will be about how to simplify Models using modules and classes.</p>
+<h3>TL;DR</h3>
+<p>If you don't want to read the entire thing, this is what I've learned in a nutshell...
+To simplify Models:</p>
+<ol>
+<li>Identify if your description of a Model/Class requires you use &quot;and&quot; or &quot;or&quot;. If it does, delegate the responsibility of some of the methods to a new class.</li>
+</ol>
+<ul>
+<li>You can use the <code>delegate</code> method to do this. More on that <a href="https://apidock.com/rails/Module/delegate">here</a>.</li>
+<li>You can also use the <code>composed_of</code> method to do this. More on that <a href="https://apidock.com/rails/ActiveRecord/Aggregations/ClassMethods/composed_of">here</a>.
+<ul>
+<li>When you use composition, you create a value object. A <strong>value object</strong> represents an entity that is equal based on value (two different objects with equal attribute values are considered equal objects). Primitive objects in Ruby such as <code>Symbol</code>, <code>String</code>, <code>Integer</code>, etc are examples of value objects.</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>You can use <strong>modules</strong> to extract behavior into separate files and then <code>include</code> or <code>extend</code> them into your classes as necessary. Modules have two main purposes:</li>
+</ol>
+<ul>
+<li>One, <strong>namespacing</strong> - a way of bundling logically related objects together into a single namespace, which helps with possible clashing of the same class names(an example of a namespace/module is <code>ActiveRecord::Base</code>).</li>
+<li>Two, <strong>mixins</strong> - providing multiple inheritance of a module through including or extending them into other classes.
+<ul>
+<li>When you <code>include</code> a module, the module methods are instance methods.</li>
+<li>When you <code>extend</code> a module, the module methods are class methods.</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>Try to avoid large transaction blocks in Controllers and Models, use <a href="https://guides.rubyonrails.org/active_record_validations.html">validations</a> such as <code>presence: true</code> and <a href="https://guides.rubyonrails.org/active_record_callbacks.html">callbacks</a> such as <code>before_save</code> in your Models instead.</li>
+</ol>
+<h1>How to use Modules/Classes to clean up Models!</h1>
+<h3>Delegate Responsibility to New Classes</h3>
+<p>Say we have a model <code>Purchase</code> . It has methods to return purchases by different criteria and export purchases in different formats:</p>
+<pre><code class="language-ruby">class Purchase &lt; ActiveRecord::Base
+  belongs_to :customer
+  has_many :items
+
+  def find_returned_credit_card_purchases
+    # ...
+  end
+
+  def find_completed_cash_purchases
+    # ...
+  end
+
+  def to_xml
+    # ...
+  end
+
+  def to_json
+    # ...
+  end
+
+  def to_csv
+    # ...
+  end
+end
+</code></pre>
+<p>If we think about how to describe this class, we can see that it violates the Single Responsibility Principle.</p>
+<p>&quot;The Single Responsibility Principle (SRP), in short, states that a class should only be responsible for one thing.&quot;</p>
+<p>You can check if your class design is in violation of this rule by asking yourself how you'd describe it and see if you need the words &quot;and&quot; or &quot;or&quot; to fully relay the functionality. For our <code>Purchase</code> class, we're doing two things: 1) creating methods to make more advanced search queries, and 2) creating methods to export data in various formats.</p>
+<p>We want to move the export methods out of the <code>Purchase</code> class because they're not really part of a <code>Purchase</code> object.</p>
+<pre><code class="language-ruby"># app/models/purchase.rb
+class Purchase &lt; ActiveRecord::Base
+  belongs_to :customer
+  has_many :items
+  delegate :to_xml, :to_csv, :to_pdf, to: 'converter'
+
+  def find_returned_credit_card_purchases
+    # ...
+  end
+
+  def find_completed_cash_purchases
+    # ...
+  end
+
+  def converter
+    PurchaseConverter.new(self)
+  end
+end
+</code></pre>
+<pre><code class="language-ruby"># app/models/purchase_converter.rb
+class OrderConverter
+  attr_reader :purchase
+
+  def intialize(purchase)
+    @purchase = purchase
+  end
+
+  def to_xml
+    # ...
+  end
+
+  def to_json
+    # ...
+  end
+
+  def to_csv
+    # ...
+  end
+end
+</code></pre>
+<p>In our refactoring, we moved the conversion methods into a new class <code>OrderConverter</code> and used delegations to enable us to call <code>@purchase.to_pdf</code>, which also follows the Law of Demeter!</p>
+<p>Another way to separate responsibility to separate classes is through the use of <strong>composition.</strong></p>
+<h4>Rails <code>composed_of</code> method</h4>
+<p>This method &quot;adds reader and writer methods for manipulating a value object&quot;.</p>
+<p>The <code>composed_of</code> method takes three main options:</p>
+<ol>
+<li>the name of the method that will reference the new object</li>
+<li>the name of the object's class (<code>:class_name</code>)</li>
+<li>the mapping of database columns to attributes on the object (<code>:mapping</code>)</li>
+</ol>
+<p>For example: if we had a <code>Company</code> model that comprised of an <code>address</code>, among other things, we could define a composition in our class like so:</p>
+<pre><code class="language-ruby">class Company &lt; ActiveRecord::Base
+  composed_of :address,
+              :mapping =&gt; [%w(address_street street), %w(address_city city)]
+end
+</code></pre>
+<p>This would give us an <code>Address</code> class that looks like the following:</p>
+<pre><code class="language-ruby">class Address
+  attr_reader :street, :city
+
+  def initialize(street, city)
+    @street, @city = street, city
+  end
+
+  # we can define more methods like the ones below to compare these objects
+  def close_to?(other_address)
+    city == other_address.city
+  end
+
+  def ==(other_address)
+    city == other_address.city &amp;&amp; street == other_address.street
+  end
+end
+</code></pre>
+<p>Now, when t we set a <code>Company</code> object's address with a street and city, we can obtain the <code>address</code> like:</p>
+<pre><code class="language-ruby">company.address_street = &quot;Cedar Grove&quot;
+company.address_city = &quot;Portland&quot;
+company.address # =&gt; Address.new(&quot;Cedar Grove&quot;, &quot;Portland&quot;)
+</code></pre>
+<h4>A lil note: the difference between Value Objects and Entity Objects</h4>
+<p>Most objects we deal with, such as if we were to instantiate our <code>Company</code> class, would be considered an entity object. We could have two instances of <code>Company</code> with the same values in each attribute, but they would still be considered not equal because they are distinct objects.</p>
+<p>On the other hand, our <code>Address</code> class describes a Value object. Value objects are compared by value, so if we had two instances of <code>Address</code> with the same values for each attribute, we would consider those objects equal because their attribute values match.</p>
+<h3>Use Modules</h3>
+<p>Modules allow you to extract behavior into separate files. If you had an <code>Order</code> class, for example, and had methods for finding all the others, searching against all the orders, and exporting all the orders into various data formats, you could move those methods into modules to organize the functionality better. If you did this, you could result in creating the following module files:</p>
+<ol>
+<li><code>lib/order_state_finders.rb</code></li>
+<li><code>lib/order_searchers.rb</code></li>
+<li><code>lib/order_exporters.rb</code></li>
+</ol>
+<p>More on modules!</p>
+<p>They have two primary purposes:</p>
+<ol>
+<li>Namespacing - a way of bundling logically related objects together</li>
+<li>Mixins - Ruby's way of providing multiple inheritance</li>
+</ol>
+<p><strong>Namespacing</strong></p>
+<p>Namespacing helps with the possibility of clashing names among various classes. For example, if we were to create a new gem with <code>bundle gem sufjan_stevens</code>, we would get a default file with a module in it:</p>
+<pre><code class="language-ruby">require &quot;sufjan_stevens/version&quot;
+
+module SufjanStevens
+  ...
+end
+</code></pre>
+<p>If we were to make a new class, we could put it in the <code>SufjanStevens</code> namespace:</p>
+<pre><code class="language-ruby">module SufjanStevens
+  class Song
+  end
+end
+</code></pre>
+<p>Now, if we were to make another gem that also had a <code>Song</code> class, we could distinguish between the two by using the namespace <code>SufjanStevens::Song.new</code>.</p>
+<p>Psst... we see this in rails with <code>ActiveRecord::Base</code>, the module being named <code>ActiveRecord</code>.</p>
+<p><strong>Mixins</strong></p>
+<p>If you have methods that need to be accessed across different classes, instead of repeating those methods in each class, you can abstract them into a module and <strong>include</strong> or <strong>extend</strong> the modules in each class.</p>
+<h4>A lil note on <code>include</code> vs <code>extend</code>:</h4>
+<p>When you <strong>include</strong> a module in a class, those methods that get called on the class are instance methods. When you <strong>extend</strong> a module in a class, those methods become class methods.</p>
+<h3>Avoid large transaction blocks in Controllers and Models</h3>
+<p>Active Record supplies built-in transactions such as <strong>validations</strong>, which allow you to ensure that only valid data is stored in your database, and <strong>callbacks</strong>, which allows you to trigger logic before or after an alteration of an object's state. Employ these instead of create a block of transactions to run to avoid complexity!</p>
+
+</div>
+
+      </div>
+  
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/code.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet">
+
+  <!-- Grab title from the page data and dump it here -->
+  <title>Adding Music to the Game</title>
+</head>
+<body>
+  <main>
+    <header class="gap-m">
+      <a href="/" class="author">
+      <div class="author"> 
+        <h2 class="author-name"> 
+          <div class="author-name-char">J</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char">e</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">s</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char"> </div> 
+          <div class="author-name-char">T</div> 
+          <div class="author-name-char">r</div> 
+          <div class="author-name-char">a</div> 
+          <div class="author-name-char">n</div> 
+          <div class="author-name-char | smiley">☺&#xFE0E;</div> 
+        </h2>
+      </div>
+      </a>
+
+      <nav class="gap-xl">
+        <ul class="nav">
+          
+          <li><a href="https://dev.to/janessatran" class="color-slide">dev.to</a></li>
+          <li><a href="https://github.com/janessatran/" class="color-slide">github</a></li>
+          <li><a href="https://www.linkedin.com/in/janessatran/" class="color-slide">linkedin</a></li>
+          <li><a href="/archive" class="color-slide">archive</a></li>
+
+        </u>
+      </nav>
+
+    </header>
+        <!-- Grab the content from the page data, dump it here, and mark it as safe -->
+      <!-- Safe docs: https://mozilla.github.io/nunjucks/templating.html#safe -->
+      <div class="content">
+      
+<div class="journal-content">
+  <p><em>This is the third post in my series on learning html game development. You can find the other posts <a href="/tags/#Game%20Dev">here</a>!</em></p>
+<p>While I don't play a lot of video games, video game music is honestly one of my favorite genres of music. I find it really great to work to (because it's upbeat/not distracting) and I also think sometimes it can really complete a game. To no surprise, I was pretty excited about this next feature which involves adding background music to the different game states (these starts are menu, play, and win)! If you'd like to learn how I did it, continue reading!</p>
+<h2>Getting the music</h2>
+<p>The first thing we need to do is obtain audio files which we can then load into the game. The website I used to download free audio is <a href="https://www.playonloop.com/">playonloop.com</a>. They have a section for royalty-free music and allow people to download free short versions of the audio. Once you download your audio files, move them into the development repo (I put mine under <code>/audio</code>) for easy access.</p>
+<h2>Adding the music to our game</h2>
+<h3>Menu Music</h3>
+<p>The first audio file we are going to add to our game is the one that plays while the player is on the menu page. We load our files, like our other assets, inside the <code>preload</code> method for each state class.</p>
+<p>Read in audio files in <code>preload</code> method:</p>
+<pre><code class="language-js">MenuState.preload = function () {
+    this.game.load.audio('music', 'audio/menu-music.wav')
+        ...
+}
+</code></pre>
+<p>Then, in the <code>create</code> method, create the audio and play it. We set <code>this.music.loop</code> to true to enable the music to play continuously.</p>
+<pre><code class="language-js">MenuState.create = function () {
+    this.music = this.game.add.audio('music');
+    this.music.loop = true;
+    this.music.play();
+  ...
+}
+</code></pre>
+<p>Since the music is playing continuously, however, we want to ensure that we stop the music before we change states so that the music doesn't overlap.</p>
+<pre><code class="language-js">MenuState.start = function () {
+  this.game.state.start(&quot;play&quot;, true, false, { level: 0 });
+  this.music.pause();
+};
+</code></pre>
+<h3>Playing Music</h3>
+<p>Next, we set up the music that plays while the game is being played. I wanted to keep the music continuous playing regardless of the level, so I had to create a variable to check if the music was already playing since music gets added at each level. I set this up by creating a flag in <code>init()</code> to keep track if the background music is playing, and then pass along the value every time a new level is created.</p>
+<p>Set the variable:</p>
+<pre><code class="language-js">PlayState.init = function (data) {
+  this.bgMusicPlaying = data.bgMusicPlaying || false;
+};
+</code></pre>
+<p>Check if music is playing via our variable <code>this.bgMusicPlaying</code>, if not, play it and set the variable:</p>
+<pre><code class="language-js">PlayState._loadLevel = function (data) {
+  if (this.bgMusicPlaying === false) {
+    this.music = this.game.add.audio(&quot;background&quot;);
+    this.music.loop = true;
+    this.music.play();
+    this.bgMusicPlaying = true;
+  }
+};
+</code></pre>
+<p>Additionally, whenever we call restart (the hero dies, or the game advances to the next level), we pass <code>this.bgMusicPlaying</code> to ensure that we don't add another layer of music if it's already playing.</p>
+<pre><code class="language-js">this.game.state.restart(true, false, {
+  level: this.level,
+  bgMusicPlaying: this.bgMusicPlaying,
+});
+</code></pre>
+<p>Finally, when the game is over, we transition to the win state, so we want to ensure that the music stops playing before we move on. We do this by checking if the next level is the last level, and if it is, pause the music.</p>
+<pre><code class="language-js">PlayState._nextLevel = function () {
+  if (this.hero.dying) {
+    this.game.state.restart(true, false, {
+      level: this.level,
+      bgMusicPlaying: this.bgMusicPlaying,
+    });
+  } else if (this.level + 1 == LEVEL_COUNT) {
+    this.fade();
+    this.music.pause();
+  } else {
+    this.game.state.restart(true, false, {
+      level: this.level + 1,
+      bgMusicPlaying: this.bgMusicPlaying,
+    });
+  }
+};
+</code></pre>
+<h3>Win State Music</h3>
+<p>Lastly, we add music to the game for when the player has finished the game. It involves the same steps we've already gone over, but repetition never hurts so I'll state the steps again!</p>
+<p>Load the asset in <code>preload</code></p>
+<pre><code class="language-js">WinState.preload = function () {
+    this.game.load.audio('music', 'audio/win-music.wav')
+        ...
+}
+</code></pre>
+<p>Add the audio to the game in <code>create</code> and set it to play on loop</p>
+<pre><code class="language-js">WinState.create = function () {
+    this.music = this.game.add.audio('music');
+    this.music.loop = true;
+    this.music.play();
+        ...
+}
+</code></pre>
+<p>Pause the music when moving to another state</p>
+<pre><code class="language-js">WinState.restart = function () {
+  this.game.state.start(&quot;menu&quot;);
+  this.music.pause();
+};
+</code></pre>
+<h2>Summary</h2>
+<p>And there we have it! Each state in the game now has background music 😃 You can check it out yourself <a href="https://janessatran.github.io/html5game/">here</a>. If you have any suggestions or questions, feel free to reach out! Thanks for reading!</p>
+
+</div>
+
+      </div>
+  
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+</body>
+</html>
