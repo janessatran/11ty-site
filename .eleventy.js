@@ -5,6 +5,8 @@ module.exports = function (eleventyConfig) {
     debug: true, // log debug information
   };
 
+  eleventyConfig.addPassthroughCopy({ "img/favicon": "/" });
+
   const files = ["src/fonts", "src/css"];
   files.forEach((file) => eleventyConfig.addPassthroughCopy(file, copyOptions));
 
