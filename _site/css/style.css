@@ -159,8 +159,10 @@ p {
 }
 
 a {
-  color: var(--color-fg);
   padding: 0 0.05em;
+}
+
+a.author {
   text-decoration: none;
 }
 
