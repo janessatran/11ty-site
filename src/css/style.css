@@ -87,7 +87,8 @@ body {
 /* Typographic tweaks: Add accessible line-height, Improve text rendering */
 body {
   -webkit-font-smoothing: antialiased;
-  background-color: var(--color-light-purple);
+  background-color: white;
+  /* background-color: var(--color-light-purple); */
   color: var(--color-fg);
   font-family: var(--text-body);
   font-feature-settings: "case" on;
@@ -102,7 +103,7 @@ html {
 }
 
 body {
-  background-color: var(--color-bg);
+  background-color: white;
 }
 
 /* Improve media defaults */
@@ -211,8 +212,7 @@ a.author {
 }
 
 .author {
-  margin-top: 6.3rem;
-  margin-bottom: 3rem;
+  margin: 0 auto;
   text-align: center;
 }
 

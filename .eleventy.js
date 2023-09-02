@@ -13,9 +13,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(embeds);
 
   // Returns a collection of blog posts in reverse date order
-  eleventyConfig.addCollection("archive", (collection) => {
-    return [...collection.getFilteredByGlob("./src/archive/*.md")].reverse();
-  });
+  // eleventyConfig.addCollection("archive", (collection) => {
+  //   return [...collection.getFilteredByGlob("./src/archive/*.md")].reverse();
+  // });
 
   eleventyConfig.addFilter(
     "filterByTags",
