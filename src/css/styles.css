@@ -349,10 +349,6 @@ ul {
 }
 
 .section {
-  padding-bottom: 2rem;
-}
-
-.section {
   padding-top: 0.5rem;
 }
 
@@ -476,7 +472,7 @@ h1 {
 
 .section h2,
 body {
-  background: #fff;
+  background: #c4c5ba;
 }
 
 dd,
@@ -515,8 +511,7 @@ p {
   }
 
   header.home h1 {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
+    padding: 0;
   }
 
   .text .subsection-content p:last-child {
